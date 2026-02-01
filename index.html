@@ -19,6 +19,7 @@
             --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
             --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --success-gradient: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
             --dark-gradient: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
             
             --primary-color: #667eea;
@@ -405,6 +406,173 @@
             margin-bottom: 0.5rem;
         }
 
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: all 0.4s ease;
+            border: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .project-image-container {
+            position: relative;
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .project-card:hover .project-image {
+            transform: scale(1.1);
+        }
+
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.7) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+
+        .project-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .project-placeholder i {
+            margin-bottom: 1rem;
+        }
+
+        .project-placeholder p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-number {
+            display: inline-block;
+            background: var(--primary-gradient);
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-content h3 {
+            color: var(--text-dark);
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .project-content p {
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-tag {
+            background: linear-gradient(135deg, #f6f8fb 0%, #e9ecef 100%);
+            color: var(--text-dark);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid var(--border-color);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
+            flex: 1;
+            text-align: center;
+            padding: 0.7rem 1rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .project-link-primary {
+            background: var(--primary-gradient);
+            color: white;
+        }
+
+        .project-link-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .project-link-secondary {
+            background: white;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .project-link-secondary:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
         /* Skills */
         .skills-grid {
             display: grid;
@@ -558,6 +726,10 @@
             .cta-buttons {
                 justify-content: center;
             }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 600px) {
@@ -581,6 +753,14 @@
             .section-title h2 {
                 font-size: 2rem;
             }
+
+            .projects-grid {
+                gap: 1.5rem;
+            }
+
+            .project-content {
+                padding: 1.5rem;
+            }
         }
     </style>
 </head>
@@ -596,7 +776,7 @@
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#experience">Experience</a></li>
-                <li><a href="#education">Education</a></li>
+                <li><a href="#projects">Projects</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -618,8 +798,8 @@
                     <a href="#contact" class="btn btn-primary">
                         <i class="fas fa-envelope"></i> Get In Touch
                     </a>
-                    <a href="#experience" class="btn btn-secondary">
-                        <i class="fas fa-briefcase"></i> View Work
+                    <a href="#projects" class="btn btn-secondary">
+                        <i class="fas fa-briefcase"></i> View Projects
                     </a>
                 </div>
                 <div class="social-links">
@@ -631,7 +811,7 @@
             </div>
             <div class="profile-container">
                 <div class="profile-image-wrapper">
-                    <img src="https://raw.githubusercontent.com/amrmansour/amrmansour.github.io/refs/heads/main/your-image.jpg" 
+                    <img src="https://raw.githubusercontent.com/amrmansourrashad/amrmansourrashad.github.io/main/your-image.jpg" 
                          alt="Amr Mansour Muhammad Rashad" 
                          class="profile-image"
                          onerror="this.src='https://ui-avatars.com/api/?name=Amr+Mansour&size=400&background=667eea&color=fff&bold=true&font-size=0.4'">
@@ -708,20 +888,6 @@
         <div class="card">
             <div class="card-header">
                 <div>
-                    <h3 class="card-title">AI Ambassador Intern</h3>
-                    <p class="card-subtitle">National Telecommunication Institute (NTI)</p>
-                </div>
-                <span class="card-date">Apr 2025 - May 2025</span>
-            </div>
-            <div class="card-description">
-                <p>Selected as an AI Ambassador in a collaborative program with Engineers for a Sustainable Egypt (ESE). 
-                Focused on leveraging AI and digital transformation to support sustainable development goals.</p>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-header">
-                <div>
                     <h3 class="card-title">Assistant Lecturer</h3>
                     <p class="card-subtitle">Nahda University (NUB)</p>
                     <p class="card-location"><i class="fas fa-map-marker-alt"></i> Bani Suwayf, Egypt</p>
@@ -738,46 +904,167 @@
         </div>
     </section>
 
-    <!-- Education Section -->
-    <section id="education">
+    <!-- Projects Section -->
+    <section id="projects">
         <div class="section-title">
-            <h2>Education</h2>
+            <h2>Featured Projects</h2>
             <div class="underline"></div>
         </div>
 
-        <div class="card">
-            <div class="card-header">
-                <div>
-                    <h3 class="card-title">Doctor of Philosophy (PhD)</h3>
-                    <p class="card-subtitle">Highway and Airport Engineering</p>
-                    <p class="card-location"><i class="fas fa-university"></i> Aswan University</p>
+        <div class="projects-grid">
+            <!-- Project 1 -->
+            <div class="project-card">
+                <div class="project-image-container">
+                    <!-- Replace 'project1.jpg' with your project image -->
+                    <img src="project1.jpg" alt="Project 1" class="project-image" 
+                         onerror="this.parentElement.innerHTML='<div class=\'project-placeholder\'><i class=\'fas fa-folder-open\'></i><p>Upload project1.jpg</p></div>'">
+                    <div class="project-overlay"></div>
                 </div>
-                <span class="card-date">Dec 2022 - Present</span>
+                <div class="project-content">
+                    <span class="project-number">01</span>
+                    <h3>Project Title 1</h3>
+                    <p>
+                        Add a detailed description of your first project here. Explain the objectives, 
+                        your role, technologies used, and the impact or results achieved.
+                    </p>
+                    <div class="project-tags">
+                        <span class="project-tag">Excel</span>
+                        <span class="project-tag">Data Analysis</span>
+                        <span class="project-tag">Power BI</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link project-link-primary">
+                            <i class="fas fa-eye"></i> View Project
+                        </a>
+                        <a href="#" class="project-link project-link-secondary">
+                            <i class="fab fa-github"></i> Code
+                        </a>
+                    </div>
+                </div>
             </div>
-        </div>
 
-        <div class="card">
-            <div class="card-header">
-                <div>
-                    <h3 class="card-title">Master's Degree</h3>
-                    <p class="card-subtitle">Highway and Airport Engineering</p>
-                    <p class="card-location"><i class="fas fa-university"></i> Minia University</p>
+            <!-- Project 2 -->
+            <div class="project-card">
+                <div class="project-image-container">
+                    <!-- Replace 'project2.jpg' with your project image -->
+                    <img src="project2.jpg" alt="Project 2" class="project-image" 
+                         onerror="this.parentElement.innerHTML='<div class=\'project-placeholder\'><i class=\'fas fa-folder-open\'></i><p>Upload project2.jpg</p></div>'">
+                    <div class="project-overlay"></div>
                 </div>
-                <span class="card-date">Oct 2019 - Sep 2022</span>
+                <div class="project-content">
+                    <span class="project-number">02</span>
+                    <h3>Project Title 2</h3>
+                    <p>
+                        Add a detailed description of your second project here. Highlight the challenges 
+                        you faced, solutions implemented, and key takeaways from the experience.
+                    </p>
+                    <div class="project-tags">
+                        <span class="project-tag">SQL</span>
+                        <span class="project-tag">Python</span>
+                        <span class="project-tag">Dashboard</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link project-link-primary">
+                            <i class="fas fa-eye"></i> View Project
+                        </a>
+                        <a href="#" class="project-link project-link-secondary">
+                            <i class="fab fa-github"></i> Code
+                        </a>
+                    </div>
+                </div>
             </div>
-        </div>
 
-        <div class="card">
-            <div class="card-header">
-                <div>
-                    <h3 class="card-title">Bachelor of Engineering</h3>
-                    <p class="card-subtitle">Civil Engineering</p>
-                    <p class="card-location"><i class="fas fa-university"></i> Nahda University (NUB)</p>
+            <!-- Project 3 -->
+            <div class="project-card">
+                <div class="project-image-container">
+                    <!-- Replace 'project3.jpg' with your project image -->
+                    <img src="project3.jpg" alt="Project 3" class="project-image" 
+                         onerror="this.parentElement.innerHTML='<div class=\'project-placeholder\'><i class=\'fas fa-folder-open\'></i><p>Upload project3.jpg</p></div>'">
+                    <div class="project-overlay"></div>
                 </div>
-                <span class="card-date">Sep 2013 - Sep 2018</span>
+                <div class="project-content">
+                    <span class="project-number">03</span>
+                    <h3>Project Title 3</h3>
+                    <p>
+                        Describe your third project in detail. Include information about the problem 
+                        statement, methodology, tools and frameworks used, and the final outcomes.
+                    </p>
+                    <div class="project-tags">
+                        <span class="project-tag">Civil 3D</span>
+                        <span class="project-tag">Highway Design</span>
+                        <span class="project-tag">CAD</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link project-link-primary">
+                            <i class="fas fa-eye"></i> View Project
+                        </a>
+                        <a href="#" class="project-link project-link-secondary">
+                            <i class="fab fa-github"></i> Code
+                        </a>
+                    </div>
+                </div>
             </div>
-            <div class="card-description">
-                <p><strong>Grade:</strong> Excellent (A+) with Honors | GPA: 3.95/4.0 | Top of Class</p>
+
+            <!-- Project 4 -->
+            <div class="project-card">
+                <div class="project-image-container">
+                    <!-- Replace 'project4.jpg' with your project image -->
+                    <img src="project4.jpg" alt="Project 4" class="project-image" 
+                         onerror="this.parentElement.innerHTML='<div class=\'project-placeholder\'><i class=\'fas fa-folder-open\'></i><p>Upload project4.jpg</p></div>'">
+                    <div class="project-overlay"></div>
+                </div>
+                <div class="project-content">
+                    <span class="project-number">04</span>
+                    <h3>Project Title 4</h3>
+                    <p>
+                        Provide a comprehensive overview of your fourth project. Discuss the scope, 
+                        deliverables, stakeholders involved, and any measurable results or achievements.
+                    </p>
+                    <div class="project-tags">
+                        <span class="project-tag">MATLAB</span>
+                        <span class="project-tag">Slope Stability</span>
+                        <span class="project-tag">Research</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link project-link-primary">
+                            <i class="fas fa-eye"></i> View Project
+                        </a>
+                        <a href="#" class="project-link project-link-secondary">
+                            <i class="fab fa-github"></i> Code
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 5 -->
+            <div class="project-card">
+                <div class="project-image-container">
+                    <!-- Replace 'project5.jpg' with your project image -->
+                    <img src="project5.jpg" alt="Project 5" class="project-image" 
+                         onerror="this.parentElement.innerHTML='<div class=\'project-placeholder\'><i class=\'fas fa-folder-open\'></i><p>Upload project5.jpg</p></div>'">
+                    <div class="project-overlay"></div>
+                </div>
+                <div class="project-content">
+                    <span class="project-number">05</span>
+                    <h3>Project Title 5</h3>
+                    <p>
+                        Detail your fifth project with emphasis on innovation, creativity, and technical 
+                        excellence. Share insights on what made this project unique and valuable.
+                    </p>
+                    <div class="project-tags">
+                        <span class="project-tag">Data Visualization</span>
+                        <span class="project-tag">Infrastructure</span>
+                        <span class="project-tag">Analytics</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link project-link-primary">
+                            <i class="fas fa-eye"></i> View Project
+                        </a>
+                        <a href="#" class="project-link project-link-secondary">
+                            <i class="fab fa-github"></i> Code
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
