@@ -3,660 +3,414 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amr M. Rashad - Portfolio</title>
+    <title>Amr Mansour Muhammad Rashad - Portfolio</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --primary-color: #2c3e50; /* Dark Slate Blue */
+            --accent-color: #3498db;  /* Professional Blue */
+            --text-color: #333;
+            --light-bg: #f8f9fa;
+            --white: #ffffff;
+            --border-color: #e9ecef;
+            --section-spacing: 60px;
         }
 
-        :root {
-            --navy-blue: #001f3f;
-            --light-navy: #003d7a;
-            --accent-blue: #0074D9;
-            --text-light: #f4f4f4;
-            --text-dark: #333;
-            --gray-bg: #f8f9fa;
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', sans-serif;
             line-height: 1.6;
-            color: var(--text-dark);
+            color: var(--text-color);
+            background-color: var(--light-bg);
         }
 
-        /* Header & Navigation */
-        header {
-            background: var(--navy-blue);
-            color: var(--text-light);
-            padding: 1rem 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        nav h1 {
-            font-size: 1.5rem;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 2rem;
-        }
-
-        nav a {
-            color: var(--text-light);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
-            color: var(--accent-blue);
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, var(--navy-blue) 0%, var(--light-navy) 100%);
-            color: var(--text-light);
-            padding: 8rem 2rem 4rem;
-            text-align: center;
-            margin-top: 60px;
-        }
-
-        .profile-image {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            border: 5px solid var(--text-light);
-            margin: 0 auto 1.5rem;
-            object-fit: cover;
-            background: var(--gray-bg);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-dark);
-            font-size: 3rem;
-        }
-
-        .hero h2 {
-            font-size: 2.5rem;
+        h1, h2, h3, h4 {
+            color: var(--primary-color);
             margin-bottom: 0.5rem;
         }
 
-        .hero .title {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            color: var(--accent-blue);
-        }
-
-        .hero p {
-            max-width: 700px;
-            margin: 0 auto 2rem;
-            font-size: 1.1rem;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            margin-top: 1.5rem;
-        }
-
-        .social-links a {
-            color: var(--text-light);
+        h1 { font-weight: 700; letter-spacing: -0.5px; }
+        h2 { 
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
             font-size: 1.5rem;
-            transition: color 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        a { color: var(--accent-color); text-decoration: none; transition: 0.3s; }
+        a:hover { color: var(--primary-color); text-decoration: underline; }
+
+        /* Layout */
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: var(--white);
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            border-radius: 8px;
         }
 
-        .social-links a:hover {
-            color: var(--accent-blue);
-        }
-
-        /* Section Styles */
-        section {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-        }
-
-        section h2 {
-            color: var(--navy-blue);
-            font-size: 2rem;
-            margin-bottom: 2rem;
+        /* Header */
+        header {
             text-align: center;
-            position: relative;
-            padding-bottom: 1rem;
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid var(--border-color);
         }
 
-        section h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: var(--accent-blue);
+        .profile-name {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
         }
 
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: start;
+        .profile-title {
+            font-size: 1.1rem;
+            color: #666;
+            font-weight: 300;
+            margin-bottom: 20px;
         }
 
-        .about-text p {
-            margin-bottom: 1rem;
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            font-size: 0.9rem;
+        }
+
+        .contact-info a {
+            color: #555;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Sections */
+        section {
+            margin-bottom: var(--section-spacing);
+        }
+
+        /* Summary */
+        .summary-text {
+            font-family: 'Merriweather', serif;
+            color: #444;
+            font-size: 1.05rem;
             text-align: justify;
         }
 
-        .info-box {
-            background: var(--gray-bg);
-            padding: 1.5rem;
-            border-radius: 8px;
-            border-left: 4px solid var(--navy-blue);
-        }
-
-        .info-box p {
-            margin: 0.5rem 0;
-        }
-
-        .info-box strong {
-            color: var(--navy-blue);
-        }
-
-        /* Education & Experience */
+        /* Experience & Education Items */
         .timeline-item {
-            background: white;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            border-radius: 8px;
-            border-left: 4px solid var(--accent-blue);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            padding-left: 20px;
+            border-left: 3px solid var(--border-color);
+            transition: 0.3s;
         }
 
-        .timeline-item h3 {
-            color: var(--navy-blue);
-            margin-bottom: 0.5rem;
+        .timeline-item:hover {
+            border-left-color: var(--accent-color);
         }
 
-        .timeline-item .date {
-            color: var(--accent-blue);
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-        }
-
-        .timeline-item .institution {
-            color: #666;
-            font-style: italic;
-            margin-bottom: 0.5rem;
-        }
-
-        /* Skills Section */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .skill-category {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-
-        .skill-category h3 {
-            color: var(--navy-blue);
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
-        }
-
-        .skill-category ul {
-            list-style: none;
-        }
-
-        .skill-category li {
-            padding: 0.5rem 0;
-            padding-left: 1.5rem;
-            position: relative;
-        }
-
-        .skill-category li::before {
-            content: '▹';
-            position: absolute;
-            left: 0;
-            color: var(--accent-blue);
-            font-weight: bold;
-        }
-
-        /* Projects Section */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .project-card {
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .project-placeholder {
-            background: var(--gray-bg);
-            height: 200px;
+        .item-header {
             display: flex;
-            align-items: center;
-            justify-content: center;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            margin-bottom: 5px;
+        }
+
+        .role {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--primary-color);
+        }
+
+        .company {
+            font-weight: 600;
+            color: #555;
+        }
+
+        .date {
+            font-size: 0.9rem;
+            color: #888;
+            font-style: italic;
+        }
+
+        .location {
+            font-size: 0.85rem;
             color: #999;
-            font-size: 3rem;
+            display: block;
+            margin-bottom: 8px;
         }
 
-        .project-content {
-            padding: 1.5rem;
+        .description {
+            font-size: 0.95rem;
+            color: #444;
+        }
+        
+        .description ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+        
+        .description li {
+            margin-bottom: 5px;
         }
 
-        .project-content h3 {
-            color: var(--navy-blue);
-            margin-bottom: 0.5rem;
-        }
-
-        .project-content p {
-            color: #666;
-            margin-bottom: 1rem;
-        }
-
-        .project-tags {
+        /* Skills */
+        .skills-grid {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
+            gap: 10px;
         }
 
-        .tag {
-            background: var(--navy-blue);
+        .skill-tag {
+            background: #f1f3f5;
+            color: var(--primary-color);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 1px solid transparent;
+            transition: 0.2s;
+        }
+
+        .skill-tag:hover {
+            background: var(--accent-color);
             color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 15px;
-            font-size: 0.85rem;
         }
 
         /* Publications */
         .publication-item {
-            background: white;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            border-left: 4px solid var(--navy-blue);
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .publication-title {
+            font-weight: 600;
+            color: var(--primary-color);
         }
 
-        .publication-item p {
-            line-height: 1.8;
-            text-align: justify;
+        /* Mobile Adjustments */
+        @media (max-width: 600px) {
+            .container { padding: 20px; margin: 0; border-radius: 0; }
+            .profile-name { font-size: 2rem; }
+            .item-header { flex-direction: column; }
+            .date { margin-bottom: 5px; }
         }
-
-        /* Contact Section */
-        #contact {
-            background: var(--gray-bg);
-        }
-
-        .contact-info {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            text-align: center;
-        }
-
-        .contact-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-
-        .contact-card i {
-            font-size: 2.5rem;
-            color: var(--accent-blue);
-            margin-bottom: 1rem;
-        }
-
-        .contact-card h3 {
-            color: var(--navy-blue);
-            margin-bottom: 0.5rem;
-        }
-
-        .contact-card a {
-            color: var(--accent-blue);
-            text-decoration: none;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--navy-blue);
-            color: var(--text-light);
-            text-align: center;
-            padding: 2rem;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            nav ul {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .hero h2 {
-                font-size: 2rem;
-            }
-
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-
-            section {
-                padding: 3rem 1rem;
-            }
-        }
-
-        /* Smooth Scroll */
-        html {
-            scroll-behavior: smooth;
+        
+        /* Print Styles */
+        @media print {
+            body { background: white; }
+            .container { box-shadow: none; margin: 0; width: 100%; max-width: 100%; }
+            a { text-decoration: none; color: black; }
+            .skill-tag { border: 1px solid #ccc; }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <header>
-        <nav>
-            <h1>AMR</h1>
+
+    <div class="container">
+        <!-- Header Section -->
+        <header>
+            <h1 class="profile-name">Amr Mansour Muhammad Rashad</h1>
+            <p class="profile-title">
+                Road Construction Engineer @ Ministry of Transport | Data Analyst<br>
+                PhD Candidate in Highway and Airport Engineering
+            </p>
+            <div class="contact-info">
+                <a href="mailto:amr.mansour.rashad@gmail.com"><i class="fas fa-envelope"></i> amr.mansour.rashad@gmail.com</a>
+                <a href="tel:+201025771088"><i class="fas fa-phone"></i> +20 102 577 1088</a>
+                <a href="https://www.linkedin.com/in/amrmansourrashad" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                <a href="http://bebestengineer.blogspot.com.eg/" target="_blank"><i class="fas fa-globe"></i> Blog</a>
+                <a href="#"><i class="fas fa-map-marker-alt"></i> Cairo, Egypt</a>
+            </div>
+        </header>
+
+        <!-- Summary Section -->
+        <section id="about">
+            <h2>Summary</h2>
+            <p class="summary-text">
+                As a seasoned Roads Construction Engineer at the Ministry of Transport, I apply my academic and professional expertise—anchored by a Master's degree in Highway Engineering—to advance roadway safety, operational efficiency, and infrastructure resilience across Egypt. My engineering journey commenced with a Bachelor's degree in Civil Engineering from Nahda University, where I also served as an Assistant Lecturer.
+                <br><br>
+                At the General Authority for Roads and Bridges, I contribute to the successful execution of infrastructure projects through a combination of technical proficiency, strategic contract negotiation, and effective teamwork. Currently participating in the Digital Egypt Pioneers Initiative (DEPI) in Data Analytics, I am focused on integrating data mining and visualization to optimize construction management processes and enhance decision-making in infrastructure projects.
+            </p>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience">
+            <h2>Professional Experience</h2>
+
+            <div class="timeline-item">
+                <div class="item-header">
+                    <span class="role">Road Construction Engineer</span>
+                    <span class="date">Sep 2024 - Present</span>
+                </div>
+                <span class="company">Ministry of Transport – General Authority for Roads and Bridges</span>
+                <span class="location">Cairo, Egypt</span>
+                <div class="description">
+                    <ul>
+                        <li>Working at the Central Administration for Roads Construction and Maintenance.</li>
+                        <li>Responsible for supervising and managing the execution of national road construction and maintenance projects.</li>
+                        <li>Preparing technical specifications, quantity estimates, and contract documentation.</li>
+                        <li>Participating in tender evaluation, project coordination, and on-site quality control.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="item-header">
+                    <span class="role">Internship Trainee (Data Analytics Track)</span>
+                    <span class="date">Nov 2025 - Present</span>
+                </div>
+                <span class="company">Digital Egypt Pioneers Initiative (DEPI) - MCIT</span>
+                <span class="location">Cairo, Egypt</span>
+                <div class="description">
+                    <ul>
+                        <li>Mastering data mining, visualization, and statistical analysis to enhance decision-making in infrastructure projects.</li>
+                        <li>Applying advanced data insights to research in Highway & Airport Engineering.</li>
+                        <li>Optimizing construction management processes using data-driven strategies.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="item-header">
+                    <span class="role">AI Ambassador Intern</span>
+                    <span class="date">Apr 2025 - May 2025</span>
+                </div>
+                <span class="company">National Telecommunication Institute (NTI)</span>
+                <div class="description">
+                    <p>Selected as an AI Ambassador in a collaborative program with Engineers for a Sustainable Egypt (ESE). Focused on leveraging AI and digital transformation to support sustainable development goals in the engineering sector.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="item-header">
+                    <span class="role">Engineering Trainee</span>
+                    <span class="date">Mar 2024 - Aug 2024</span>
+                </div>
+                <span class="company">Egyptian Military Academy</span>
+                <div class="description">
+                    <p>Focused on enhancing foundational knowledge in civil engineering project management, technical reporting, and public infrastructure systems. Developed leadership and communication skills.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="item-header">
+                    <span class="role">Assistant Lecturer</span>
+                    <span class="date">Sep 2022 - Oct 2023</span>
+                </div>
+                <span class="company">Nahda University (NUB)</span>
+                <span class="location">Bani Suwayf, Egypt</span>
+                <div class="description">
+                    <ul>
+                        <li>Conducted laboratory experiments (Fluid Mechanics, Soil Mechanics, Highway Materials).</li>
+                        <li>Delivered hands-on training in Civil 3D, Excel, and Primavera.</li>
+                        <li>Assisted in teaching Highway Engineering, Transportation, and Project Management courses.</li>
+                    </ul>
+                </div>
+            </div>
+            
+             <div class="timeline-item">
+                <div class="item-header">
+                    <span class="role">Head of Scheduling Committee</span>
+                    <span class="date">Mar 2019 - Sep 2022</span>
+                </div>
+                <span class="company">Civil Engineering Department, Nahda University</span>
+                <div class="description">
+                    <p>Led the development and coordination of academic schedules, ensuring alignment with departmental and university-wide calendars.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education">
+            <h2>Education</h2>
+
+            <div class="timeline-item">
+                <div class="item-header">
+                    <span class="role">Doctor of Philosophy (PhD), Highway and Airport Engineering</span>
+                    <span class="date">Dec 2022 - Present</span>
+                </div>
+                <span class="company">Aswan University</span>
+            </div>
+
+            <div class="timeline-item">
+                <div class="item-header">
+                    <span class="role">Master's Degree, Highway and Airport Engineering</span>
+                    <span class="date">Oct 2019 - Sep 2022</span>
+                </div>
+                <span class="company">Minia University</span>
+            </div>
+
+            <div class="timeline-item">
+                <div class="item-header">
+                    <span class="role">Bachelor of Engineering, Civil Engineering</span>
+                    <span class="date">Sep 2013 - Sep 2018</span>
+                </div>
+                <span class="company">Nahda University (NUB)</span>
+                <div class="description">
+                    <p>Grade: Excellent (A+) with Honors | GPA: 3.95/4.0 | Top of Class</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills">
+            <h2>Skills & Technologies</h2>
+            <div class="skills-grid">
+                <span class="skill-tag">Road Construction</span>
+                <span class="skill-tag">Highway Engineering</span>
+                <span class="skill-tag">Data Analysis</span>
+                <span class="skill-tag">Advanced Excel</span>
+                <span class="skill-tag">SQL</span>
+                <span class="skill-tag">Power BI</span>
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">AutoCAD Civil 3D</span>
+                <span class="skill-tag">Primavera</span>
+                <span class="skill-tag">Slope Stability Analysis</span>
+                <span class="skill-tag">Artificial Intelligence (AI)</span>
+                <span class="skill-tag">Digital Transformation</span>
+            </div>
+        </section>
+
+        <!-- Publications Section -->
+        <section id="publications">
+            <h2>Publications</h2>
+            <div class="publication-item">
+                <div class="publication-title">Optimized Numerical Models of Slope Stability of Roads Embankment Using Limit Equilibrium Method</div>
+                <p>2nd International Conference on Civil Engineering: Recent Applications and Future Challenges (2021)</p>
+            </div>
+            <div class="publication-item">
+                <div class="publication-title">Effect of soil nailing on the slope stability of road embankments under traffic load using the optimized LEM</div>
+                <p>Journal of Advanced Engineering Trends (2023), Vol 42, No. 2</p>
+            </div>
+        </section>
+        
+        <!-- Awards Section -->
+        <section id="awards">
+            <h2>Honors & Awards</h2>
             <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#publications">Publications</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li>The Excellent Student Award at Faculty of Engineering</li>
+                <li>The Excellent Demonstrator Award at Faculty of Engineering</li>
             </ul>
-        </nav>
-    </header>
+        </section>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="profile-image">
-            <img src="https://raw.githubusercontent.com/amrmansourrashad/amrmansourrashad.github.io/refs/heads/main/your-image.jpg" alt="Amr Rashad" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;">
-
-        </div>
-        <h2>Amr M. Rashad</h2>
-        <p class="title">Roads Construction Engineer | Ph.D. Student in Highway Engineering</p>
-        <p>Passionate civil engineer specializing in highway and airport engineering with expertise in pavement design, slope stability analysis, and numerical modeling. Currently pursuing doctoral research at Aswan University.</p>
-        <div class="social-links">
-            <a href="mailto:Amr.Mansour.Rashad@gmail.com" title="Email">📧</a>
-            <a href="https://www.linkedin.com/in/BeBestEgy" target="_blank" title="LinkedIn">🔗</a>
-            <a href="https://bebestengineer.blogspot.com/" target="_blank" title="Blog">📝</a>
-            <a href="https://www.researchgate.net/profile/Amr-Mansour-4" target="_blank" title="ResearchGate">🔬</a>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about">
-        <h2>About Me</h2>
-        <div class="about-content">
-            <div class="about-text">
-                <p>I am a Roads Construction Engineer at the Ministry of Transport (Egypt), working at the Central Administration for Roads Construction and Maintenance. With a strong academic background including a Master's degree in Highway and Airport Engineering from Minia University, I am currently pursuing my Ph.D. at Aswan University.</p>
-                <p>My research focuses on optimized numerical models of slope stability and road embankment analysis. I have published peer-reviewed papers on slope stability using limit equilibrium methods and soil nailing techniques. Beyond research, I founded "Be Best Engineering," a popular blog that has reached 150,000 views, sharing knowledge and resources with the civil engineering community.</p>
-                <p>I combine theoretical expertise with practical experience in highway design, traffic engineering, and project management, utilizing advanced software tools including Civil 3D, Plaxis 2D, GeoStudio, and MATLAB.</p>
-            </div>
-            <div class="info-box">
-                <p><strong>Position:</strong> Roads Construction Engineer</p>
-                <p><strong>Organization:</strong> General Authority for Roads and Bridges, Ministry of Transport (Egypt)</p>
-                <p><strong>Education:</strong> M.Sc. in Civil Engineering (Highway & Airport Engineering)</p>
-                <p><strong>Current Study:</strong> Ph.D. Student at Aswan University</p>
-                <p><strong>Location:</strong> Cairo, Egypt</p>
-                <p><strong>Languages:</strong> Arabic (Native), English (Fluent)</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Education Section -->
-    <section id="education">
-        <h2>Education</h2>
-        <div class="timeline-item">
-            <div class="date">2022 – Present</div>
-            <h3>Ph.D. in Civil Engineering (Highway and Airport Engineering)</h3>
-            <p class="institution">Aswan University, Egypt</p>
-            <p>Conducting advanced research in highway engineering with focus on pavement materials and performance optimization.</p>
-        </div>
-        <div class="timeline-item">
-            <div class="date">2019 – 2022</div>
-            <h3>M.Sc. in Civil Engineering (Highway and Airport Engineering)</h3>
-            <p class="institution">Minia University, Egypt</p>
-            <p><strong>Thesis:</strong> Applicability of Optimized Numerical Models of Slope Stability of Road Embankments Adjacent to Water Channels under Traffic Load</p>
-        </div>
-        <div class="timeline-item">
-            <div class="date">2018 – 2019</div>
-            <h3>Pre-Master's Degree in Civil Engineering</h3>
-            <p class="institution">Minia University, Egypt</p>
-            <p>Grade: Very Good</p>
-        </div>
-        <div class="timeline-item">
-            <div class="date">2013 – 2018</div>
-            <h3>Bachelor of Civil Engineering</h3>
-            <p class="institution">NAHDA University in Beni Suef, Egypt</p>
-            <p>Overall Grade: Excellent (A+) with honors | GPA: 3.95/4.0 (93.67%) | Top of the Class</p>
-            <p><strong>Graduation Project:</strong> Design of NAHDA Freeway (Grade: 98%)</p>
-        </div>
-    </section>
-
-    <!-- Experience Section -->
-    <section id="experience">
-        <h2>Professional Experience</h2>
-        <div class="timeline-item">
-            <div class="date">October 2023 – Present</div>
-            <h3>Roads Construction Engineer</h3>
-            <p class="institution">Central Administration for Roads Construction and Maintenance, General Authority for Roads and Bridges, Ministry of Transport (Egypt)</p>
-            <p>Leading highway construction projects, conducting technical analyses, and ensuring compliance with engineering standards while pursuing Ph.D. research.</p>
-        </div>
-        <div class="timeline-item">
-            <div class="date">October 2022 – October 2023</div>
-            <h3>Assistant Lecturer</h3>
-            <p class="institution">Department of Civil Engineering, NAHDA University in Beni Suef, Egypt</p>
-            <p>Taught undergraduate courses in highway engineering, transportation engineering, hydraulics, and supervised laboratory experiments while pursuing doctoral studies.</p>
-        </div>
-        <div class="timeline-item">
-            <div class="date">October 2018 – October 2022</div>
-            <h3>Demonstrator</h3>
-            <p class="institution">Department of Civil Engineering, NAHDA University in Beni Suef, Egypt</p>
-            <p>Assisted in teaching and laboratory supervision for civil engineering courses including Highway Engineering, Project Management, Surveying, and Soil Mechanics while completing M.Sc. degree.</p>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills">
-        <h2>Technical Skills</h2>
-        <div class="skills-grid">
-            <div class="skill-category">
-                <h3>Design & CAD Software</h3>
-                <ul>
-                    <li>AutoCAD</li>
-                    <li>AutoCAD Civil 3D</li>
-                    <li>InfraWorks</li>
-                    <li>Surfer</li>
-                </ul>
-            </div>
-            <div class="skill-category">
-                <h3>Structural Analysis</h3>
-                <ul>
-                    <li>Etabs</li>
-                    <li>Safe</li>
-                    <li>Sap2000</li>
-                </ul>
-            </div>
-            <div class="skill-category">
-                <h3>Geotechnical & Scientific</h3>
-                <ul>
-                    <li>Plaxis 2D</li>
-                    <li>GeoStudio</li>
-                    <li>MATLAB</li>
-                    <li>SPSS (Statistical Analysis)</li>
-                </ul>
-            </div>
-            <div class="skill-category">
-                <h3>Project Management</h3>
-                <ul>
-                    <li>Primavera</li>
-                    <li>Work Planning</li>
-                    <li>Job Distribution</li>
-                    <li>Team Leadership</li>
-                </ul>
-            </div>
-            <div class="skill-category">
-                <h3>Office & Productivity</h3>
-                <ul>
-                    <li>Advanced Microsoft Excel</li>
-                    <li>Microsoft Word</li>
-                    <li>Microsoft PowerPoint</li>
-                    <li>EndNote (Reference Management)</li>
-                </ul>
-            </div>
-            <div class="skill-category">
-                <h3>Programming & Web</h3>
-                <ul>
-                    <li>HTML</li>
-                    <li>Windows & DOS</li>
-                    <li>Blogger Management</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects">
-        <h2>Projects</h2>
-        <div class="projects-grid">
-            <!-- Project 1 - Placeholder -->
-            <div class="project-card">
-                <div class="project-placeholder">🚧</div>
-                <div class="project-content">
-                    <h3>Project Title 1</h3>
-                    <p>Project description will be added here. Brief overview of the project scope, objectives, and outcomes.</p>
-                    <div class="project-tags">
-                        <span class="tag">Tag1</span>
-                        <span class="tag">Tag2</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project 2 - Placeholder -->
-            <div class="project-card">
-                <div class="project-placeholder">🚧</div>
-                <div class="project-content">
-                    <h3>Project Title 2</h3>
-                    <p>Project description will be added here. Brief overview of the project scope, objectives, and outcomes.</p>
-                    <div class="project-tags">
-                        <span class="tag">Tag1</span>
-                        <span class="tag">Tag2</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project 3 - Placeholder -->
-            <div class="project-card">
-                <div class="project-placeholder">🚧</div>
-                <div class="project-content">
-                    <h3>Project Title 3</h3>
-                    <p>Project description will be added here. Brief overview of the project scope, objectives, and outcomes.</p>
-                    <div class="project-tags">
-                        <span class="tag">Tag1</span>
-                        <span class="tag">Tag2</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project 4 - Placeholder -->
-            <div class="project-card">
-                <div class="project-placeholder">🚧</div>
-                <div class="project-content">
-                    <h3>Project Title 4</h3>
-                    <p>Project description will be added here. Brief overview of the project scope, objectives, and outcomes.</p>
-                    <div class="project-tags">
-                        <span class="tag">Tag1</span>
-                        <span class="tag">Tag2</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Publications Section -->
-    <section id="publications">
-        <h2>Publications</h2>
-        <div class="publication-item">
-            <p><strong>[1]</strong> A. M. Rashad, M. D. Hashem, A. Abdel-Halim Mahmoud, and T. E. Mahmoud, "Optimized numerical models of slope stability of roads embankment using limit equilibrium method," in <em>2nd International Conference on Civil Engineering: Recent Applications and Future Challenges</em>, 2021, pp. 318–329.</p>
-        </div>
-        <div class="publication-item">
-            <p><strong>[2]</strong> A. M. Rashad, M. D. Hashem, A. Abdel-Halim Mahmoud, and T. E. Mahmoud, "Effect of soil nailing on the slope stability of road embankments under traffic load using the optimized LEM," <em>Journal of Advanced Engineering Trends</em>, 2023, vol. 42, no. 2.</p>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact">
-        <h2>Get In Touch</h2>
-        <div class="contact-info">
-            <div class="contact-card">
-                <i>📧</i>
-                <h3>Email</h3>
-                <a href="mailto:Amr.Mansour.Rashad@gmail.com">Amr.Mansour.Rashad@gmail.com</a>
-            </div>
-            <div class="contact-card">
-                <i>🔗</i>
-                <h3>LinkedIn</h3>
-                <a href="https://www.linkedin.com/in/BeBestEgy" target="_blank">linkedin.com/in/BeBestEgy</a>
-            </div>
-			<div class="contact-card">
-            <i>📱</i>
-            <h3>Phone</h3>
-            <p><a href="tel:+201025771088">+20 10 2577 1088</a></p>
-            <p><a href="tel:+201555117366">+20 15 5511 7366</a></p>
-			</div>
-            <div class="contact-card">
-                <i>📝</i>
-                <h3>Blog</h3>
-                <a href="https://bebestengineer.blogspot.com/" target="_blank">Be Best Engineering</a>
-            </div>
-            <div class="contact-card">
-                <i>🔬</i>
-                <h3>ResearchGate</h3>
-                <a href="https://www.researchgate.net/profile/Amr-Mansour-4" target="_blank">ResearchGate Profile</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2026 Amr M. Rashad. All rights reserved.</p>
-    </footer>
+    </div>
 </body>
 </html>
