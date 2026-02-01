@@ -1,416 +1,890 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amr Mansour Muhammad Rashad - Portfolio</title>
+    <title>Amr Mansour Muhammad Rashad - Professional Portfolio</title>
+    
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    <!-- Font Awesome for Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         :root {
-            --primary-color: #2c3e50; /* Dark Slate Blue */
-            --accent-color: #3498db;  /* Professional Blue */
-            --text-color: #333;
-            --light-bg: #f8f9fa;
+            /* Modern Color Palette */
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --dark-gradient: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+            
+            --primary-color: #667eea;
+            --secondary-color: #764ba2;
+            --accent-color: #00d4ff;
+            --dark-bg: #0f172a;
+            --light-bg: #f8fafc;
             --white: #ffffff;
-            --border-color: #e9ecef;
-            --section-spacing: 60px;
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+            --border-color: #e2e8f0;
+            
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.04);
+            --shadow-md: 0 4px 20px rgba(0,0,0,0.08);
+            --shadow-lg: 0 10px 40px rgba(102, 126, 234, 0.15);
+            --shadow-xl: 0 20px 60px rgba(102, 126, 234, 0.2);
         }
 
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--light-bg);
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background: var(--light-bg);
+            overflow-x: hidden;
         }
 
-        h1, h2, h3, h4 {
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
+        /* Animated Background */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
         }
 
-        h1 { font-weight: 700; letter-spacing: -0.5px; }
-        h2 { 
-            border-bottom: 2px solid var(--accent-color);
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-            font-size: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        .animated-bg::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            top: -200px;
+            right: -200px;
+            animation: float 20s ease-in-out infinite;
         }
-        
-        a { color: var(--accent-color); text-decoration: none; transition: 0.3s; }
-        a:hover { color: var(--primary-color); text-decoration: underline; }
 
-        /* Layout */
-        .container {
-            max-width: 900px;
-            margin: 40px auto;
-            background: var(--white);
-            padding: 40px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-            border-radius: 8px;
+        .animated-bg::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(118, 75, 162, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            bottom: -100px;
+            left: -100px;
+            animation: float 15s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(30px, -50px) rotate(120deg); }
+            66% { transform: translate(-20px, 20px) rotate(240deg); }
         }
 
         /* Header */
         header {
-            text-align: center;
-            margin-bottom: 50px;
-            padding-bottom: 30px;
-            border-bottom: 1px solid var(--border-color);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.2rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
         }
 
-        .profile-name {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            color: var(--primary-color);
-        }
-
-        .profile-title {
-            font-size: 1.1rem;
-            color: #666;
-            font-weight: 300;
-            margin-bottom: 20px;
-        }
-
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            font-size: 0.9rem;
-        }
-
-        .contact-info a {
-            color: #555;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        /* Sections */
-        section {
-            margin-bottom: var(--section-spacing);
-        }
-
-        /* Summary */
-        .summary-text {
-            font-family: 'Merriweather', serif;
-            color: #444;
-            font-size: 1.05rem;
-            text-align: justify;
-        }
-
-        /* Experience & Education Items */
-        .timeline-item {
-            margin-bottom: 30px;
-            padding-left: 20px;
-            border-left: 3px solid var(--border-color);
-            transition: 0.3s;
-        }
-
-        .timeline-item:hover {
-            border-left-color: var(--accent-color);
-        }
-
-        .item-header {
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
             display: flex;
             justify-content: space-between;
-            align-items: baseline;
-            flex-wrap: wrap;
-            margin-bottom: 5px;
+            align-items: center;
         }
 
-        .role {
-            font-weight: 700;
-            font-size: 1.1rem;
-            color: var(--primary-color);
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        .company {
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-gradient);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 2rem 60px;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero-text .subtitle {
+            font-size: 1.3rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease 0.2s backwards;
+        }
+
+        .hero-text p {
+            font-size: 1.05rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+            animation: fadeInUp 0.8s ease 0.4s backwards;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            animation: fadeInUp 0.8s ease 0.6s backwards;
+        }
+
+        .btn {
+            padding: 0.9rem 2rem;
+            border-radius: 50px;
             font-weight: 600;
-            color: #555;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: var(--shadow-md);
         }
 
-        .date {
-            font-size: 0.9rem;
-            color: #888;
-            font-style: italic;
+        .btn-primary {
+            background: var(--primary-gradient);
+            color: white;
         }
 
-        .location {
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* Profile Image */
+        .profile-container {
+            position: relative;
+            animation: fadeInRight 1s ease;
+        }
+
+        .profile-image-wrapper {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            margin: 0 auto;
+        }
+
+        .profile-image-wrapper::before {
+            content: '';
+            position: absolute;
+            inset: -20px;
+            background: var(--primary-gradient);
+            border-radius: 50%;
+            animation: rotate 10s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .profile-image {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 10px solid white;
+            box-shadow: var(--shadow-xl);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Social Links */
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .social-links a:hover {
+            background: var(--primary-gradient);
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 80px 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title .underline {
+            width: 80px;
+            height: 4px;
+            background: var(--primary-gradient);
+            margin: 0 auto;
+            border-radius: 2px;
+        }
+
+        /* Cards */
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.3rem;
+        }
+
+        .card-subtitle {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-date {
+            background: var(--accent-gradient);
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
             font-size: 0.85rem;
-            color: #999;
-            display: block;
-            margin-bottom: 8px;
+            font-weight: 600;
         }
 
-        .description {
-            font-size: 0.95rem;
-            color: #444;
+        .card-location {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            margin-bottom: 1rem;
         }
-        
-        .description ul {
-            margin-left: 20px;
-            margin-top: 10px;
+
+        .card-description {
+            color: var(--text-light);
+            line-height: 1.7;
         }
-        
-        .description li {
-            margin-bottom: 5px;
+
+        .card-description ul {
+            margin-left: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .card-description li {
+            margin-bottom: 0.5rem;
         }
 
         /* Skills */
         .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .skill-category h3 {
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
             display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-category h3 i {
+            color: var(--primary-color);
         }
 
         .skill-tag {
-            background: #f1f3f5;
-            color: var(--primary-color);
-            padding: 6px 12px;
+            display: inline-block;
+            background: linear-gradient(135deg, #f6f8fb 0%, #e9ecef 100%);
+            color: var(--text-dark);
+            padding: 0.5rem 1rem;
             border-radius: 20px;
+            margin: 0.3rem;
             font-size: 0.9rem;
             font-weight: 500;
-            border: 1px solid transparent;
-            transition: 0.2s;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
         }
 
         .skill-tag:hover {
-            background: var(--accent-color);
+            background: var(--primary-gradient);
             color: white;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
         }
 
-        /* Publications */
-        .publication-item {
-            margin-bottom: 15px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid #eee;
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
         }
-        
-        .publication-title {
-            font-weight: 600;
+
+        .contact-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .contact-card i {
+            font-size: 2.5rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .contact-card h3 {
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-card a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-card a:hover {
             color: var(--primary-color);
         }
 
-        /* Mobile Adjustments */
-        @media (max-width: 600px) {
-            .container { padding: 20px; margin: 0; border-radius: 0; }
-            .profile-name { font-size: 2rem; }
-            .item-header { flex-direction: column; }
-            .date { margin-bottom: 5px; }
+        /* Footer */
+        footer {
+            background: var(--dark-gradient);
+            color: white;
+            text-align: center;
+            padding: 2rem;
         }
-        
-        /* Print Styles */
-        @media print {
-            body { background: white; }
-            .container { box-shadow: none; margin: 0; width: 100%; max-width: 100%; }
-            a { text-decoration: none; color: black; }
-            .skill-tag { border: 1px solid #ccc; }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+            
+            .profile-image-wrapper {
+                width: 300px;
+                height: 300px;
+            }
+            
+            nav ul {
+                gap: 1rem;
+            }
+            
+            .cta-buttons {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 600px) {
+            nav ul {
+                display: none;
+            }
+            
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-text .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .profile-image-wrapper {
+                width: 250px;
+                height: 250px;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Animated Background -->
+    <div class="animated-bg"></div>
 
-    <div class="container">
-        <!-- Header Section -->
-        <header>
-            <h1 class="profile-name">Amr Mansour Muhammad Rashad</h1>
-            <p class="profile-title">
-                Road Construction Engineer @ Ministry of Transport | Data Analyst<br>
-                PhD Candidate in Highway and Airport Engineering
-            </p>
-            <div class="contact-info">
-                <a href="mailto:amr.mansour.rashad@gmail.com"><i class="fas fa-envelope"></i> amr.mansour.rashad@gmail.com</a>
-                <a href="tel:+201025771088"><i class="fas fa-phone"></i> +20 102 577 1088</a>
-                <a href="https://www.linkedin.com/in/amrmansourrashad" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-                <a href="http://bebestengineer.blogspot.com.eg/" target="_blank"><i class="fas fa-globe"></i> Blog</a>
-                <a href="#"><i class="fas fa-map-marker-alt"></i> Cairo, Egypt</a>
-            </div>
-        </header>
-
-        <!-- Summary Section -->
-        <section id="about">
-            <h2>Summary</h2>
-            <p class="summary-text">
-                As a seasoned Roads Construction Engineer at the Ministry of Transport, I apply my academic and professional expertise—anchored by a Master's degree in Highway Engineering—to advance roadway safety, operational efficiency, and infrastructure resilience across Egypt. My engineering journey commenced with a Bachelor's degree in Civil Engineering from Nahda University, where I also served as an Assistant Lecturer.
-                <br><br>
-                At the General Authority for Roads and Bridges, I contribute to the successful execution of infrastructure projects through a combination of technical proficiency, strategic contract negotiation, and effective teamwork. Currently participating in the Digital Egypt Pioneers Initiative (DEPI) in Data Analytics, I am focused on integrating data mining and visualization to optimize construction management processes and enhance decision-making in infrastructure projects.
-            </p>
-        </section>
-
-        <!-- Experience Section -->
-        <section id="experience">
-            <h2>Professional Experience</h2>
-
-            <div class="timeline-item">
-                <div class="item-header">
-                    <span class="role">Road Construction Engineer</span>
-                    <span class="date">Sep 2024 - Present</span>
-                </div>
-                <span class="company">Ministry of Transport – General Authority for Roads and Bridges</span>
-                <span class="location">Cairo, Egypt</span>
-                <div class="description">
-                    <ul>
-                        <li>Working at the Central Administration for Roads Construction and Maintenance.</li>
-                        <li>Responsible for supervising and managing the execution of national road construction and maintenance projects.</li>
-                        <li>Preparing technical specifications, quantity estimates, and contract documentation.</li>
-                        <li>Participating in tender evaluation, project coordination, and on-site quality control.</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="timeline-item">
-                <div class="item-header">
-                    <span class="role">Internship Trainee (Data Analytics Track)</span>
-                    <span class="date">Nov 2025 - Present</span>
-                </div>
-                <span class="company">Digital Egypt Pioneers Initiative (DEPI) - MCIT</span>
-                <span class="location">Cairo, Egypt</span>
-                <div class="description">
-                    <ul>
-                        <li>Mastering data mining, visualization, and statistical analysis to enhance decision-making in infrastructure projects.</li>
-                        <li>Applying advanced data insights to research in Highway & Airport Engineering.</li>
-                        <li>Optimizing construction management processes using data-driven strategies.</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="timeline-item">
-                <div class="item-header">
-                    <span class="role">AI Ambassador Intern</span>
-                    <span class="date">Apr 2025 - May 2025</span>
-                </div>
-                <span class="company">National Telecommunication Institute (NTI)</span>
-                <div class="description">
-                    <p>Selected as an AI Ambassador in a collaborative program with Engineers for a Sustainable Egypt (ESE). Focused on leveraging AI and digital transformation to support sustainable development goals in the engineering sector.</p>
-                </div>
-            </div>
-
-            <div class="timeline-item">
-                <div class="item-header">
-                    <span class="role">Engineering Trainee</span>
-                    <span class="date">Mar 2024 - Aug 2024</span>
-                </div>
-                <span class="company">Egyptian Military Academy</span>
-                <div class="description">
-                    <p>Focused on enhancing foundational knowledge in civil engineering project management, technical reporting, and public infrastructure systems. Developed leadership and communication skills.</p>
-                </div>
-            </div>
-
-            <div class="timeline-item">
-                <div class="item-header">
-                    <span class="role">Assistant Lecturer</span>
-                    <span class="date">Sep 2022 - Oct 2023</span>
-                </div>
-                <span class="company">Nahda University (NUB)</span>
-                <span class="location">Bani Suwayf, Egypt</span>
-                <div class="description">
-                    <ul>
-                        <li>Conducted laboratory experiments (Fluid Mechanics, Soil Mechanics, Highway Materials).</li>
-                        <li>Delivered hands-on training in Civil 3D, Excel, and Primavera.</li>
-                        <li>Assisted in teaching Highway Engineering, Transportation, and Project Management courses.</li>
-                    </ul>
-                </div>
-            </div>
-            
-             <div class="timeline-item">
-                <div class="item-header">
-                    <span class="role">Head of Scheduling Committee</span>
-                    <span class="date">Mar 2019 - Sep 2022</span>
-                </div>
-                <span class="company">Civil Engineering Department, Nahda University</span>
-                <div class="description">
-                    <p>Led the development and coordination of academic schedules, ensuring alignment with departmental and university-wide calendars.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Education Section -->
-        <section id="education">
-            <h2>Education</h2>
-
-            <div class="timeline-item">
-                <div class="item-header">
-                    <span class="role">Doctor of Philosophy (PhD), Highway and Airport Engineering</span>
-                    <span class="date">Dec 2022 - Present</span>
-                </div>
-                <span class="company">Aswan University</span>
-            </div>
-
-            <div class="timeline-item">
-                <div class="item-header">
-                    <span class="role">Master's Degree, Highway and Airport Engineering</span>
-                    <span class="date">Oct 2019 - Sep 2022</span>
-                </div>
-                <span class="company">Minia University</span>
-            </div>
-
-            <div class="timeline-item">
-                <div class="item-header">
-                    <span class="role">Bachelor of Engineering, Civil Engineering</span>
-                    <span class="date">Sep 2013 - Sep 2018</span>
-                </div>
-                <span class="company">Nahda University (NUB)</span>
-                <div class="description">
-                    <p>Grade: Excellent (A+) with Honors | GPA: 3.95/4.0 | Top of Class</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Skills Section -->
-        <section id="skills">
-            <h2>Skills & Technologies</h2>
-            <div class="skills-grid">
-                <span class="skill-tag">Road Construction</span>
-                <span class="skill-tag">Highway Engineering</span>
-                <span class="skill-tag">Data Analysis</span>
-                <span class="skill-tag">Advanced Excel</span>
-                <span class="skill-tag">SQL</span>
-                <span class="skill-tag">Power BI</span>
-                <span class="skill-tag">Python</span>
-                <span class="skill-tag">AutoCAD Civil 3D</span>
-                <span class="skill-tag">Primavera</span>
-                <span class="skill-tag">Slope Stability Analysis</span>
-                <span class="skill-tag">Artificial Intelligence (AI)</span>
-                <span class="skill-tag">Digital Transformation</span>
-            </div>
-        </section>
-
-        <!-- Publications Section -->
-        <section id="publications">
-            <h2>Publications</h2>
-            <div class="publication-item">
-                <div class="publication-title">Optimized Numerical Models of Slope Stability of Roads Embankment Using Limit Equilibrium Method</div>
-                <p>2nd International Conference on Civil Engineering: Recent Applications and Future Challenges (2021)</p>
-            </div>
-            <div class="publication-item">
-                <div class="publication-title">Effect of soil nailing on the slope stability of road embankments under traffic load using the optimized LEM</div>
-                <p>Journal of Advanced Engineering Trends (2023), Vol 42, No. 2</p>
-            </div>
-        </section>
-        
-        <!-- Awards Section -->
-        <section id="awards">
-            <h2>Honors & Awards</h2>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">AMR</div>
             <ul>
-                <li>The Excellent Student Award at Faculty of Engineering</li>
-                <li>The Excellent Demonstrator Award at Faculty of Engineering</li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
-        </section>
+        </nav>
+    </header>
 
-    </div>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Amr Mansour Muhammad Rashad</h1>
+                <p class="subtitle">Road Construction Engineer | Data Analyst | PhD Candidate</p>
+                <p>
+                    Passionate civil engineer specializing in highway and airport engineering with expertise in data analytics, 
+                    pavement design, and infrastructure optimization. Currently pursuing doctoral research at Aswan University 
+                    while serving at the Ministry of Transport.
+                </p>
+                <div class="cta-buttons">
+                    <a href="#contact" class="btn btn-primary">
+                        <i class="fas fa-envelope"></i> Get In Touch
+                    </a>
+                    <a href="#experience" class="btn btn-secondary">
+                        <i class="fas fa-briefcase"></i> View Work
+                    </a>
+                </div>
+                <div class="social-links">
+                    <a href="mailto:amr.mansour.rashad@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+                    <a href="https://www.linkedin.com/in/amrmansourrashad" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="http://bebestengineer.blogspot.com.eg/" target="_blank" title="Blog"><i class="fas fa-blog"></i></a>
+                    <a href="tel:+201555117366" title="Phone"><i class="fas fa-phone"></i></a>
+                </div>
+            </div>
+            <div class="profile-container">
+                <div class="profile-image-wrapper">
+                    <img src="https://raw.githubusercontent.com/amrmansour/amrmansour.github.io/refs/heads/main/your-image.jpg" 
+                         alt="Amr Mansour Muhammad Rashad" 
+                         class="profile-image"
+                         onerror="this.src='https://ui-avatars.com/api/?name=Amr+Mansour&size=400&background=667eea&color=fff&bold=true&font-size=0.4'">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="section-title">
+            <h2>About Me</h2>
+            <div class="underline"></div>
+        </div>
+        <div class="card">
+            <p style="color: var(--text-light); line-height: 1.8; text-align: justify;">
+                As a seasoned Roads Construction Engineer at the Ministry of Transport, I apply my academic and professional 
+                expertise—anchored by a Master's degree in Highway Engineering—to advance roadway safety, operational efficiency, 
+                and infrastructure resilience across Egypt. My engineering journey commenced with a Bachelor's degree in Civil 
+                Engineering from Nahda University, where I also served as an Assistant Lecturer.
+                <br><br>
+                At the General Authority for Roads and Bridges, I contribute to the successful execution of infrastructure projects 
+                through a combination of technical proficiency, strategic contract negotiation, and effective teamwork. Currently 
+                participating in the Digital Egypt Pioneers Initiative (DEPI) in Data Analytics, I am focused on integrating modern 
+                data science techniques with traditional civil engineering to drive innovation in infrastructure development.
+            </p>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="section-title">
+            <h2>Professional Experience</h2>
+            <div class="underline"></div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h3 class="card-title">Road Construction Engineer</h3>
+                    <p class="card-subtitle">Ministry of Transport – General Authority for Roads and Bridges</p>
+                    <p class="card-location"><i class="fas fa-map-marker-alt"></i> Cairo, Egypt</p>
+                </div>
+                <span class="card-date">Sep 2024 - Present</span>
+            </div>
+            <div class="card-description">
+                <ul>
+                    <li>Working at the Central Administration for Roads Construction and Maintenance</li>
+                    <li>Supervising and managing the execution of national road construction and maintenance projects</li>
+                    <li>Preparing technical specifications, quantity estimates, and contract documentation</li>
+                    <li>Participating in tender evaluation, project coordination, and on-site quality control</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h3 class="card-title">Internship Trainee (Data Analytics Track)</h3>
+                    <p class="card-subtitle">Digital Egypt Pioneers Initiative (DEPI) - MCIT</p>
+                    <p class="card-location"><i class="fas fa-map-marker-alt"></i> Cairo, Egypt</p>
+                </div>
+                <span class="card-date">Nov 2025 - Present</span>
+            </div>
+            <div class="card-description">
+                <ul>
+                    <li>Mastering data mining, visualization, and statistical analysis</li>
+                    <li>Applying advanced data insights to Highway & Airport Engineering research</li>
+                    <li>Optimizing construction management processes using data-driven strategies</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h3 class="card-title">AI Ambassador Intern</h3>
+                    <p class="card-subtitle">National Telecommunication Institute (NTI)</p>
+                </div>
+                <span class="card-date">Apr 2025 - May 2025</span>
+            </div>
+            <div class="card-description">
+                <p>Selected as an AI Ambassador in a collaborative program with Engineers for a Sustainable Egypt (ESE). 
+                Focused on leveraging AI and digital transformation to support sustainable development goals.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h3 class="card-title">Assistant Lecturer</h3>
+                    <p class="card-subtitle">Nahda University (NUB)</p>
+                    <p class="card-location"><i class="fas fa-map-marker-alt"></i> Bani Suwayf, Egypt</p>
+                </div>
+                <span class="card-date">Sep 2022 - Oct 2023</span>
+            </div>
+            <div class="card-description">
+                <ul>
+                    <li>Conducted laboratory experiments and supervised practical sessions</li>
+                    <li>Delivered hands-on training in Civil 3D, Excel, and Primavera</li>
+                    <li>Assisted in teaching Highway Engineering, Transportation, and Project Management courses</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <div class="section-title">
+            <h2>Education</h2>
+            <div class="underline"></div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h3 class="card-title">Doctor of Philosophy (PhD)</h3>
+                    <p class="card-subtitle">Highway and Airport Engineering</p>
+                    <p class="card-location"><i class="fas fa-university"></i> Aswan University</p>
+                </div>
+                <span class="card-date">Dec 2022 - Present</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h3 class="card-title">Master's Degree</h3>
+                    <p class="card-subtitle">Highway and Airport Engineering</p>
+                    <p class="card-location"><i class="fas fa-university"></i> Minia University</p>
+                </div>
+                <span class="card-date">Oct 2019 - Sep 2022</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h3 class="card-title">Bachelor of Engineering</h3>
+                    <p class="card-subtitle">Civil Engineering</p>
+                    <p class="card-location"><i class="fas fa-university"></i> Nahda University (NUB)</p>
+                </div>
+                <span class="card-date">Sep 2013 - Sep 2018</span>
+            </div>
+            <div class="card-description">
+                <p><strong>Grade:</strong> Excellent (A+) with Honors | GPA: 3.95/4.0 | Top of Class</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="section-title">
+            <h2>Skills & Technologies</h2>
+            <div class="underline"></div>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3><i class="fas fa-code"></i> Data Analytics</h3>
+                <div>
+                    <span class="skill-tag">Advanced Excel</span>
+                    <span class="skill-tag">Power BI</span>
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Data Mining</span>
+                    <span class="skill-tag">Statistical Analysis</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3><i class="fas fa-road"></i> Highway Engineering</h3>
+                <div>
+                    <span class="skill-tag">Road Construction</span>
+                    <span class="skill-tag">Pavement Design</span>
+                    <span class="skill-tag">Traffic Engineering</span>
+                    <span class="skill-tag">Slope Stability</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3><i class="fas fa-drafting-compass"></i> Design Software</h3>
+                <div>
+                    <span class="skill-tag">AutoCAD Civil 3D</span>
+                    <span class="skill-tag">Primavera</span>
+                    <span class="skill-tag">MATLAB</span>
+                    <span class="skill-tag">GeoStudio</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3><i class="fas fa-robot"></i> Digital Skills</h3>
+                <div>
+                    <span class="skill-tag">Artificial Intelligence</span>
+                    <span class="skill-tag">Digital Transformation</span>
+                    <span class="skill-tag">Project Management</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications Section -->
+    <section id="publications">
+        <div class="section-title">
+            <h2>Publications</h2>
+            <div class="underline"></div>
+        </div>
+        
+        <div class="card">
+            <h3 class="card-subtitle">Optimized Numerical Models of Slope Stability of Roads Embankment Using Limit Equilibrium Method</h3>
+            <p style="color: var(--text-light); margin-top: 0.5rem;">
+                2nd International Conference on Civil Engineering: Recent Applications and Future Challenges (2021)
+            </p>
+        </div>
+
+        <div class="card">
+            <h3 class="card-subtitle">Effect of soil nailing on the slope stability of road embankments under traffic load using the optimized LEM</h3>
+            <p style="color: var(--text-light); margin-top: 0.5rem;">
+                Journal of Advanced Engineering Trends (2023), Vol 42, No. 2
+            </p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="section-title">
+            <h2>Get In Touch</h2>
+            <div class="underline"></div>
+        </div>
+        <div class="contact-grid">
+            <div class="contact-card">
+                <i class="fas fa-envelope"></i>
+                <h3>Email</h3>
+                <a href="mailto:amr.mansour.rashad@gmail.com">amr.mansour.rashad@gmail.com</a>
+            </div>
+            <div class="contact-card">
+                <i class="fas fa-phone"></i>
+                <h3>Phone</h3>
+                <a href="tel:+201555117366">+20 15 5511 7366</a>
+            </div>
+            <div class="contact-card">
+                <i class="fab fa-linkedin"></i>
+                <h3>LinkedIn</h3>
+                <a href="https://www.linkedin.com/in/amrmansourrashad" target="_blank">amrmansourrashad</a>
+            </div>
+            <div class="contact-card">
+                <i class="fas fa-blog"></i>
+                <h3>Blog</h3>
+                <a href="http://bebestengineer.blogspot.com.eg/" target="_blank">Be Best Engineering</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Amr Mansour Muhammad Rashad. All rights reserved.</p>
+    </footer>
+
 </body>
 </html>
