@@ -1,829 +1,3089 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="ar" dir="ltr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Amr Mansour Muhammad Rashad | Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amr Mansour Muhammad Rashad - Professional Portfolio</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            /* Modern Color Palette */
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --success-gradient: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            --dark-gradient: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+            
+            --primary-color: #667eea;
+            --secondary-color: #764ba2;
+            --accent-color: #00d4ff;
+            --dark-bg: #0f172a;
+            --light-bg: #f8fafc;
+            --white: #ffffff;
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+            --border-color: #e2e8f0;
+            
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.04);
+            --shadow-md: 0 4px 20px rgba(0,0,0,0.08);
+            --shadow-lg: 0 10px 40px rgba(102, 126, 234, 0.15);
+            --shadow-xl: 0 20px 60px rgba(102, 126, 234, 0.2);
+        }
 
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background: var(--light-bg);
+            overflow-x: hidden;
+        }
 
-  <style>
-    :root{
-      --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-      --dark-gradient: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+        /* Animated Background */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+        }
 
-      --primary: #667eea;
-      --text: #0f172a;
-      --muted: #475569;
-      --bg: #f8fafc;
-      --card: #ffffff;
-      --border: #e2e8f0;
+        .animated-bg::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            top: -200px;
+            right: -200px;
+            animation: float 20s ease-in-out infinite;
+        }
 
-      --shadow-sm: 0 2px 10px rgba(0,0,0,0.05);
-      --shadow-md: 0 10px 30px rgba(2,6,23,0.10);
-      --shadow-lg: 0 20px 60px rgba(102,126,234,0.18);
+        .animated-bg::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(118, 75, 162, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            bottom: -100px;
+            left: -100px;
+            animation: float 15s ease-in-out infinite reverse;
+        }
 
-      --radius: 18px;
-    }
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(30px, -50px) rotate(120deg); }
+            66% { transform: translate(-20px, 20px) rotate(240deg); }
+        }
 
-    *{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth}
-    body{
-      font-family:'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      color:var(--text);
-      background: var(--bg);
-      line-height:1.75;
-      overflow-x:hidden;
-    }
-    a{color:inherit}
-    .container{max-width:1200px;margin:0 auto;padding:0 20px}
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.2rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+        }
 
-    /* Animated background */
-    .animated-bg{
-      position:fixed; inset:0; z-index:-1;
-      background: linear-gradient(120deg, #ffffff 0%, #eef2ff 100%);
-    }
-    .animated-bg::before{
-      content:""; position:absolute;
-      width:680px; height:680px; border-radius:50%;
-      right:-220px; top:-220px;
-      background: radial-gradient(circle, rgba(102,126,234,0.15) 0%, transparent 65%);
-      animation: float 18s ease-in-out infinite;
-    }
-    .animated-bg::after{
-      content:""; position:absolute;
-      width:480px; height:480px; border-radius:50%;
-      left:-180px; bottom:-180px;
-      background: radial-gradient(circle, rgba(0,242,254,0.12) 0%, transparent 65%);
-      animation: float 14s ease-in-out infinite reverse;
-    }
-    @keyframes float{
-      0%,100%{transform:translate(0,0) rotate(0deg)}
-      33%{transform:translate(40px,-40px) rotate(90deg)}
-      66%{transform:translate(-30px,30px) rotate(180deg)}
-    }
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    /* Header */
-    header{
-      position:fixed; top:0; left:0; right:0;
-      background: rgba(255,255,255,0.82);
-      backdrop-filter: blur(12px);
-      border-bottom:1px solid rgba(226,232,240,0.8);
-      z-index:1000;
-    }
-    .nav{
-      height:74px; display:flex; align-items:center; justify-content:space-between;
-      gap:18px;
-    }
-    .brand{
-      font-weight:800; letter-spacing:0.5px;
-      font-size:1.25rem;
-      background: var(--primary-gradient);
-      -webkit-background-clip:text; background-clip:text;
-      -webkit-text-fill-color:transparent;
-    }
-    .nav ul{list-style:none; display:flex; gap:18px; flex-wrap:wrap}
-    .nav a{
-      text-decoration:none; color:var(--muted);
-      font-weight:600; font-size:0.95rem;
-      padding:8px 10px; border-radius:12px;
-      transition: .25s ease;
-    }
-    .nav a:hover{background: rgba(102,126,234,0.10); color: var(--text)}
-    .nav .cta{
-      background: var(--primary-gradient);
-      color:#fff !important;
-      box-shadow: var(--shadow-sm);
-    }
-    .nav .cta:hover{transform: translateY(-1px); box-shadow: var(--shadow-md)}
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
 
-    /* Sections */
-    section{padding:86px 0}
-    .section-title{
-      text-align:center; margin-bottom:26px;
-    }
-    .section-title h2{
-      font-family:'Playfair Display', serif;
-      font-size:2.35rem;
-      background: var(--primary-gradient);
-      -webkit-background-clip:text; background-clip:text;
-      -webkit-text-fill-color:transparent;
-      margin-bottom:8px;
-    }
-    .underline{
-      width:86px; height:4px; border-radius:6px; margin:0 auto;
-      background: var(--primary-gradient);
-    }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
 
-    /* Hero */
-    .hero{
-      padding-top:120px;
-      min-height: 92vh;
-      display:flex; align-items:center;
-    }
-    .hero-grid{
-      display:grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap:42px;
-      align-items:center;
-    }
-    .hero h1{
-      font-family:'Playfair Display', serif;
-      font-weight:900;
-      line-height:1.1;
-      font-size:3.2rem;
-      margin-bottom:10px;
-      background: var(--primary-gradient);
-      -webkit-background-clip:text; background-clip:text;
-      -webkit-text-fill-color:transparent;
-    }
-    .subtitle{
-      font-size:1.12rem;
-      color:var(--muted);
-      font-weight:600;
-      margin-bottom:16px;
-    }
-    .hero p{color:var(--muted); max-width: 62ch}
-    .hero-actions{display:flex; gap:12px; margin-top:22px; flex-wrap:wrap}
-    .btn{
-      display:inline-flex; align-items:center; gap:10px;
-      text-decoration:none;
-      border-radius:999px;
-      padding:12px 18px;
-      font-weight:700;
-      border:2px solid transparent;
-      transition:.25s ease;
-    }
-    .btn-primary{background: var(--primary-gradient); color:#fff; box-shadow: var(--shadow-sm)}
-    .btn-primary:hover{transform: translateY(-2px); box-shadow: var(--shadow-lg)}
-    .btn-secondary{background:#fff; border-color: rgba(102,126,234,0.45); color: var(--text)}
-    .btn-secondary:hover{background: rgba(102,126,234,0.08)}
+        nav a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
 
-    /* Profile image */
-    .profile-wrap{
-      width:360px; height:360px; margin-left:auto; margin-right:auto;
-      position:relative;
-    }
-    .profile-wrap::before{
-      content:""; position:absolute; inset:-18px;
-      border-radius:50%;
-      background: var(--primary-gradient);
-      filter: saturate(1.1);
-      animation: spin 10s linear infinite;
-      z-index:-1;
-    }
-    @keyframes spin{to{transform: rotate(360deg)}}
-    .profile-img{
-      width:100%; height:100%;
-      border-radius:50%;
-      border:10px solid #fff;
-      object-fit:cover;
-      box-shadow: var(--shadow-lg);
-      background:#fff;
-    }
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-gradient);
+            transition: width 0.3s ease;
+        }
 
-    /* Card */
-    .card{
-      background: var(--card);
-      border:1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow-sm);
-      padding:22px;
-    }
-    .card + .card{margin-top:18px}
-    .card-title{font-size:1.2rem; font-weight:800; margin-bottom:6px}
-    .card-description{color:var(--muted)}
+        nav a:hover::after {
+            width: 100%;
+        }
 
-    /* ===== Projects Gallery ===== */
-    .project-gallery-grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-      gap:18px;
-      margin-top:18px;
-    }
-    .gallery-thumb{
-      position:relative;
-      border-radius:14px;
-      overflow:hidden;
-      cursor:pointer;
-      box-shadow:0 10px 24px rgba(0,0,0,.08);
-      background:#0b1220;
-      aspect-ratio: 16 / 10;
-      border:1px solid rgba(255,255,255,.06);
-    }
-    .gallery-thumb img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      display:block;
-      transform:scale(1.02);
-      transition:transform .35s ease, filter .35s ease;
-    }
-    .gallery-thumb:hover img{
-      transform:scale(1.08);
-      filter:saturate(1.1);
-    }
-    .gallery-thumb .cap{
-      position:absolute;
-      inset:auto 0 0 0;
-      padding:10px 12px;
-      color:#fff;
-      font-weight:700;
-      font-size:.95rem;
-      background:linear-gradient(to top, rgba(0,0,0,.72), rgba(0,0,0,0));
-    }
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 2rem 60px;
+            position: relative;
+        }
 
-    /* ===== Lightbox ===== */
-    .lightbox{
-      position:fixed;
-      inset:0;
-      display:none;
-      align-items:center;
-      justify-content:center;
-      background:rgba(2,6,23,.82);
-      z-index:9999;
-      padding:18px;
-    }
-    .lightbox.open{ display:flex; }
-    .lightbox-content{
-      width:min(1100px, 100%);
-      background:#0b1220;
-      border:1px solid rgba(255,255,255,.08);
-      border-radius:16px;
-      overflow:hidden;
-      box-shadow:0 30px 80px rgba(0,0,0,.45);
-    }
-    .lightbox-top{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:10px;
-      padding:12px 14px;
-      color:#e5e7eb;
-      background:rgba(255,255,255,.04);
-    }
-    .lightbox-title{ font-weight:800; font-size:.95rem; }
-    .lightbox-close{
-      border:0;
-      background:transparent;
-      color:#e5e7eb;
-      font-size:20px;
-      cursor:pointer;
-      padding:6px 10px;
-      border-radius:10px;
-    }
-    .lightbox-close:hover{ background:rgba(255,255,255,.08); }
-    .lightbox-main{ position:relative; background:#000; }
-    .lightbox-main img{
-      width:100%;
-      height:min(70vh, 720px);
-      object-fit:contain;
-      display:block;
-    }
-    .lightbox-nav{
-      position:absolute;
-      top:50%;
-      transform:translateY(-50%);
-      width:44px;
-      height:44px;
-      border-radius:12px;
-      border:1px solid rgba(255,255,255,.15);
-      background:rgba(15,23,42,.55);
-      color:#fff;
-      cursor:pointer;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size:18px;
-      backdrop-filter:blur(8px);
-    }
-    .lightbox-nav:hover{ background:rgba(15,23,42,.75); }
-    .lightbox-prev{ left:12px; }
-    .lightbox-next{ right:12px; }
-    .lightbox-thumbs{
-      display:flex;
-      gap:10px;
-      padding:12px;
-      overflow:auto;
-      background:#0b1220;
-    }
-    .lightbox-thumbs img{
-      width:92px;
-      height:58px;
-      object-fit:cover;
-      border-radius:10px;
-      cursor:pointer;
-      opacity:.75;
-      border:2px solid transparent;
-    }
-    .lightbox-thumbs img.active{
-      opacity:1;
-      border-color:#667eea;
-    }
+        .hero-content {
+            max-width: 1200px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
 
-    /* ===== Contact (Professional) ===== */
-    #contact{padding-bottom:110px}
-    .contact-grid{
-      display:grid;
-      grid-template-columns: 1fr 1.1fr;
-      gap:18px;
-      align-items:start;
-    }
-    .contact-panel{
-      background: #0b1220;
-      color:#e5e7eb;
-      border-radius: var(--radius);
-      padding:22px;
-      border:1px solid rgba(255,255,255,.08);
-      box-shadow: var(--shadow-md);
-      overflow:hidden;
-      position:relative;
-    }
-    .contact-panel::before{
-      content:"";
-      position:absolute;
-      inset:-180px -220px auto auto;
-      width:420px;height:420px;border-radius:50%;
-      background: radial-gradient(circle, rgba(102,126,234,0.35) 0%, transparent 60%);
-      pointer-events:none;
-    }
-    .contact-panel h3{font-size:1.25rem; font-weight:900; margin-bottom:6px}
-    .contact-panel p{color: rgba(229,231,235,0.78); margin-bottom:14px}
-    .contact-items{
-      display:grid;
-      gap:12px;
-      margin-top:10px;
-    }
-    .contact-item{
-      display:flex;
-      gap:12px;
-      align-items:flex-start;
-      padding:12px;
-      border-radius:14px;
-      background: rgba(255,255,255,0.05);
-      border:1px solid rgba(255,255,255,0.06);
-    }
-    .contact-item i{
-      width:38px; height:38px;
-      display:flex; align-items:center; justify-content:center;
-      border-radius:12px;
-      background: rgba(79,172,254,0.16);
-      color:#cfe9ff;
-      flex: 0 0 auto;
-      margin-top:2px;
-    }
-    .contact-item .label{font-weight:800; font-size:0.95rem}
-    .contact-item .value{color: rgba(229,231,235,0.8); font-size:0.95rem}
-    .contact-item a{color:#e5e7eb; text-decoration:none}
-    .contact-item a:hover{text-decoration:underline}
+        .hero-text h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 0.8s ease;
+        }
 
-    /* Form styles (Formspree) */
-    .fs-form{
-      background: var(--card);
-      border:1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow-sm);
-      padding:22px;
-    }
-    .fs-form h3{font-size:1.25rem; font-weight:900; margin-bottom:10px}
-    .fs-form .hint{color:var(--muted); margin-bottom:14px; font-size:0.98rem}
-    .fs-field{margin-bottom:14px}
-    .fs-label{display:block; font-weight:800; margin-bottom:6px; color: var(--text)}
-    .fs-input, .fs-textarea{
-      width:100%;
-      padding:12px 12px;
-      border-radius:14px;
-      border:1px solid var(--border);
-      background:#fff;
-      outline:none;
-      font-size:0.98rem;
-      transition:.2s ease;
-    }
-    .fs-input:focus, .fs-textarea:focus{
-      border-color: rgba(102,126,234,0.65);
-      box-shadow: 0 0 0 4px rgba(102,126,234,0.16);
-    }
-    .fs-textarea{min-height:140px; resize:vertical}
-    .fs-description{color:var(--muted); font-size:0.9rem; margin-top:6px}
-    .fs-button-group{margin-top:10px}
-    .fs-button{
-      width:100%;
-      border:0;
-      border-radius:999px;
-      padding:12px 16px;
-      font-weight:900;
-      cursor:pointer;
-      color:#fff;
-      background: var(--primary-gradient);
-      box-shadow: var(--shadow-sm);
-      transition:.25s ease;
-    }
-    .fs-button:hover{transform: translateY(-2px); box-shadow: var(--shadow-lg)}
+        .hero-text .subtitle {
+            font-size: 1.3rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease 0.2s backwards;
+        }
 
-    footer{
-      background: var(--dark-gradient);
-      color:#fff;
-      padding:18px 0;
-      text-align:center;
-      font-weight:600;
-    }
+        .hero-text p {
+            font-size: 1.05rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+            animation: fadeInUp 0.8s ease 0.4s backwards;
+        }
 
-    /* Responsive */
-    @media (max-width: 980px){
-      .hero-grid{grid-template-columns:1fr; text-align:center}
-      .hero p{margin-left:auto;margin-right:auto}
-      .hero-actions{justify-content:center}
-      .profile-wrap{width:280px;height:280px}
-      .contact-grid{grid-template-columns:1fr}
-    }
-    @media (max-width: 640px){
-      .nav ul{display:none}
-      .hero h1{font-size:2.35rem}
-      .section-title h2{font-size:2.0rem}
-      .lightbox-thumbs img{width:78px;height:50px}
-    }
-  </style>
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            animation: fadeInUp 0.8s ease 0.6s backwards;
+        }
+
+        .btn {
+            padding: 0.9rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-primary {
+            background: var(--primary-gradient);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* Profile Image */
+        .profile-container {
+            position: relative;
+            animation: fadeInRight 1s ease;
+        }
+
+        .profile-image-wrapper {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            margin: 0 auto;
+        }
+
+        .profile-image-wrapper::before {
+            content: '';
+            position: absolute;
+            inset: -20px;
+            background: var(--primary-gradient);
+            border-radius: 50%;
+            animation: rotate 10s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .profile-image {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 10px solid white;
+            box-shadow: var(--shadow-xl);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Social Links */
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .social-links a:hover {
+            background: var(--primary-gradient);
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 80px 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title .underline {
+            width: 80px;
+            height: 4px;
+            background: var(--primary-gradient);
+            margin: 0 auto;
+            border-radius: 2px;
+        }
+
+        /* Cards */
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.3rem;
+        }
+
+        .card-subtitle {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-date {
+            background: var(--accent-gradient);
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .card-location {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-description {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        .card-description ul {
+            margin-left: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .card-description li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Projects Grid (keep original grid, but add gallery thumbs) */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: all 0.4s ease;
+            border: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        /* Replace big banner image with compact thumbs area */
+        .project-image-container {
+            position: relative;
+            width: 100%;
+            height: auto;
+            overflow: hidden;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 14px;
+        }
+
+        .project-overlay { display: none; }
+
+        .project-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+            display: none; /* hide old single image */
+        }
+
+        .project-placeholder {
+            width: 100%;
+            min-height: 120px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.2rem;
+            padding: 16px;
+            border-radius: 16px;
+            border: 1px dashed rgba(255,255,255,0.35);
+            background: rgba(255,255,255,0.08);
+        }
+
+        .project-placeholder i { margin-bottom: 0.8rem; }
+        .project-placeholder p { font-size: 0.9rem; opacity: 0.9; }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-number {
+            display: inline-block;
+            background: var(--primary-gradient);
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-content h3 {
+            color: var(--text-dark);
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .project-content p {
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .project-tag {
+            background: linear-gradient(135deg, #f6f8fb 0%, #e9ecef 100%);
+            color: var(--text-dark);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid var(--border-color);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
+            flex: 1;
+            text-align: center;
+            padding: 0.7rem 1rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .project-link-primary {
+            background: var(--primary-gradient);
+            color: white;
+        }
+
+        .project-link-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .project-link-secondary {
+            background: white;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .project-link-secondary:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* Project Gallery (small thumbs) */
+        .project-gallery {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+        }
+
+        .project-thumb {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            aspect-ratio: 4/3;
+            border: 1px solid rgba(255,255,255,0.25);
+            background: rgba(255,255,255,0.12);
+            box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+            transition: transform .2s ease, box-shadow .2s ease;
+        }
+
+        .project-thumb:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 26px rgba(0,0,0,0.18);
+        }
+
+        .project-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .project-thumb.more::after {
+            content: attr(data-more);
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.55);
+            color: #fff;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.05rem;
+        }
+
+        /* Lightbox */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            background: rgba(5,10,20,0.86);
+            z-index: 9999;
+            padding: 16px;
+        }
+        .lightbox.open { display: flex; }
+
+        .lightbox-dialog {
+            width: min(1100px, 100%);
+            background: #0b1220;
+            border: 1px solid rgba(255,255,255,0.10);
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 30px 90px rgba(0,0,0,0.55);
+        }
+
+        .lightbox-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            padding: 12px 14px;
+            background: rgba(255,255,255,0.06);
+            color: #e5e7eb;
+        }
+
+        .lightbox-title { font-weight: 800; font-size: 0.95rem; }
+
+        .lightbox-close {
+            border: 0;
+            background: transparent;
+            color: #e5e7eb;
+            font-size: 20px;
+            cursor: pointer;
+            padding: 6px 10px;
+            border-radius: 10px;
+        }
+        .lightbox-close:hover { background: rgba(255,255,255,0.10); }
+
+        .lightbox-main { position: relative; background: #000; }
+        .lightbox-main img {
+            width: 100%;
+            height: min(72vh, 760px);
+            object-fit: contain;
+            display: block;
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.18);
+            background: rgba(15,23,42,0.55);
+            color: #fff;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+        .lightbox-nav:hover { background: rgba(15,23,42,0.78); }
+        .lightbox-prev { left: 12px; }
+        .lightbox-next { right: 12px; }
+
+        .lightbox-thumbs {
+            display: flex;
+            gap: 10px;
+            padding: 12px;
+            overflow: auto;
+            background: #0b1220;
+        }
+
+        .lightbox-thumbs img {
+            width: 86px;
+            height: 56px;
+            object-fit: cover;
+            border-radius: 10px;
+            cursor: pointer;
+            opacity: .72;
+            border: 2px solid transparent;
+        }
+        .lightbox-thumbs img.active {
+            opacity: 1;
+            border-color: var(--accent-color);
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .skill-category h3 {
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-category h3 i {
+            color: var(--primary-color);
+        }
+
+        .skill-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, #f6f8fb 0%, #e9ecef 100%);
+            color: var(--text-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            margin: 0.3rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .skill-tag:hover {
+            background: var(--primary-gradient);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Contact Section (Professional + matches form) */
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.1fr;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        .contact-panel {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+        }
+
+        .contact-panel h3 {
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .contact-panel p {
+            color: var(--text-light);
+            margin-bottom: 1.2rem;
+        }
+
+        .contact-list {
+            display: grid;
+            gap: 12px;
+        }
+
+        .contact-line {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            padding: 12px;
+            border-radius: 14px;
+            border: 1px solid var(--border-color);
+            background: linear-gradient(135deg, #ffffff 0%, #f7f8ff 100%);
+        }
+
+        .contact-line i {
+            width: 42px;
+            height: 42px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(102,126,234,0.12);
+            color: var(--primary-color);
+            border: 1px solid rgba(102,126,234,0.18);
+            flex: 0 0 auto;
+            margin-top: 2px;
+        }
+
+        .contact-line .label {
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 2px;
+        }
+
+        .contact-line .value, .contact-line a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .contact-line a:hover { color: var(--primary-color); text-decoration: underline; }
+
+        /* Formspree Form */
+        .fs-form {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+        }
+
+        .fs-form h3 {
+            color: var(--text-dark);
+            margin-bottom: 0.4rem;
+            font-size: 1.2rem;
+        }
+
+        .fs-hint {
+            color: var(--text-light);
+            margin-bottom: 1.2rem;
+            font-size: 0.95rem;
+        }
+
+        .fs-field { margin-bottom: 14px; }
+
+        .fs-label {
+            display: block;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 6px;
+        }
+
+        .fs-input, .fs-textarea {
+            width: 100%;
+            padding: 12px 12px;
+            border-radius: 14px;
+            border: 1px solid var(--border-color);
+            outline: none;
+            font-size: 0.98rem;
+        }
+
+        .fs-input:focus, .fs-textarea:focus {
+            border-color: rgba(102,126,234,0.55);
+            box-shadow: 0 0 0 4px rgba(102,126,234,0.14);
+        }
+
+        .fs-textarea { min-height: 140px; resize: vertical; }
+
+        .fs-description {
+            color: var(--text-light);
+            margin-top: 6px;
+            font-size: 0.9rem;
+        }
+
+        .fs-button {
+            width: 100%;
+            border: 0;
+            border-radius: 50px;
+            padding: 12px 16px;
+            font-weight: 800;
+            cursor: pointer;
+            background: var(--primary-gradient);
+            color: #fff;
+            transition: transform .2s ease, box-shadow .2s ease;
+            box-shadow: var(--shadow-md);
+        }
+        .fs-button:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+
+        /* Footer */
+        footer {
+            background: var(--dark-gradient);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+            
+            .profile-image-wrapper {
+                width: 300px;
+                height: 300px;
+            }
+            
+            nav ul {
+                gap: 1rem;
+            }
+            
+            .cta-buttons {
+                justify-content: center;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-layout{
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            nav ul {
+                display: none;
+            }
+            
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-text .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .profile-image-wrapper {
+                width: 250px;
+                height: 250px;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .projects-grid {
+                gap: 1.5rem;
+            }
+
+            .project-content {
+                padding: 1.5rem;
+            }
+
+            .project-gallery{
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-bg"></div>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">AMR</div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Amr Mansour Muhammad Rashad</h1>
+                <p class="subtitle">Road Construction Engineer | Data Analyst | PhD Candidate</p>
+                <p>
+                    Passionate civil engineer specializing in highway and airport engineering with expertise in data analytics, 
+                    pavement design, and infrastructure optimization. Currently pursuing doctoral research at Aswan University 
+                    while serving at the Ministry of Transport.
+                </p>
+                <div class="cta-buttons">
+                    <a href="#contact" class="btn btn-primary">
+                        <i class="fas fa-envelope"></i> Get In Touch
+                    </a>
+                    <a href="#projects" class="btn btn-secondary">
+                        <i class="fas fa-briefcase"></i> View Projects
+                    </a>
+                </div>
+                <div class="social-links">
+                    <a href="mailto:amr.mansour.rashad@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+                    <a href="https://www.linkedin.com/in/amrmansourrashad" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="http://bebestengineer.blogspot.com.eg/" target="_blank" title="Blog"><i class="fas fa-blog"></i></a>
+                    <a href="tel:+201555117366" title="Phone"><i class="fas fa-phone"></i></a>
+                </div>
+            </div>
+            <div class="profile-container">
+                <div class="profile-image-wrapper">
+                    <img src="https://raw.githubusercontent.com/amrmansourrashad/amrmansourrashad.github.io/main/your-image.jpg" 
+                         alt="Amr Mansour Muhammad Rashad" 
+                         class="profile-image"
+                         onerror="this.src='https://ui-avatars.com/api/?name=Amr+Mansour&size=400&background=667eea&color=fff&bold=true&font-size=0.4'">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="section-title">
+            <h2>About Me</h2>
+            <div class="underline"></div>
+        </div>
+        <div class="card">
+            <p style="color: var(--text-light); line-height: 1.8; text-align: justify;">
+                As a seasoned Roads Construction Engineer at the Ministry of Transport, I apply my academic and professional 
+                expertise—anchored by a Master's degree in Highway Engineering—to advance roadway safety, operational efficiency, 
+                and infrastructure resilience across Egypt. My engineering journey commenced with a Bachelor's degree in Civil 
+                Engineering from Nahda University, where I also served as an Assistant Lecturer.
+                <br><br>
+                At the General Authority for Roads and Bridges, I contribute to the successful execution of infrastructure projects 
+                through a combination of technical proficiency, strategic contract negotiation, and effective teamwork. Currently 
+                participating in the Digital Egypt Pioneers Initiative (DEPI) in Data Analytics, I am focused on integrating modern 
+                data science techniques with traditional civil engineering to drive innovation in infrastructure development.
+            </p>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="section-title">
+            <h2>Professional Experience</h2>
+            <div class="underline"></div>
+        </div>
+
+        <!-- Current Position -->
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h3 class="card-title">Road Construction Engineer</h3>
+                    <p class="card-subtitle">Ministry of Transport – General Authority for Roads and Bridges, Egypt</p>
+                    <p class="card-location"><i class="fas fa-map-marker-alt"></i> Cairo, Egypt</p>
+                </div>
+                <span class="card-date">Sep 2024 - Present</span>
+            </div>
+            <div class="card-description">
+                <p>Working as a Roads Construction Engineer at the Central Administration for Roads Construction and Maintenance, part of the General Authority for Roads and Bridges.</p>
+                <ul>
+                    <li>Responsible for supervising and managing the execution of national road construction and maintenance projects</li>
+                    <li>Engaged in preparing technical specifications, quantity estimates, and contract documentation</li>
+                    <li>Participates in tender evaluation, project coordination, and quality control on-site</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- DEPI -->
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h3 class="card-title">Internship Trainee - Data Analytics Track</h3>
+                    <p class="card-subtitle">Digital Egypt Pioneers Initiative (DEPI) - Ministry of Communications and Information Technology</p>
+                    <p class="card-location"><i class="fas fa-map-marker-alt"></i> Cairo, Egypt</p>
+                </div>
+                <span class="card-date">Nov 2025 - Present</span>
+            </div>
+            <div class="card-description">
+                <p>Joined the Digital Egypt Pioneers Initiative (DEPI) in the Data Analytics track, under the auspices of the Ministry of Communications and Information Technology (MCIT).</p>
+                <ul>
+                    <li>Mastering data mining, visualization, and statistical analysis to enhance decision-making in infrastructure projects</li>
+                    <li>Applying advanced data insights to research in Highway & Airport Engineering</li>
+                    <li>Optimizing construction management processes using data-driven strategies</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- NTI AI Ambassador -->
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h3 class="card-title">AI Ambassador Intern</h3>
+                    <p class="card-subtitle">National Telecommunication Institute (NTI)</p>
+                    <p class="card-location"><i class="fas fa-map-marker-alt"></i> Cairo, Egypt</p>
+                </div>
+                <span class="card-date">Apr 2025 - May 2025</span>
+            </div>
+            <div class="card-description">
+                <p>Selected as an AI Ambassador in a collaborative program between NTI and Engineers for a Sustainable Egypt (ESE). The program focused on leveraging Artificial Intelligence and digital transformation to support sustainable development goals within the engineering sector.</p>
+            </div>
+        </div>
+
+        <!-- Egyptian Military Academy -->
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h3 class="card-title">Engineering Trainee – Internship Program</h3>
+                    <p class="card-subtitle">Egyptian Military Academy</p>
+                    <p class="card-location"><i class="fas fa-map-marker-alt"></i> Cairo, Egypt</p>
+                </div>
+                <span class="card-date">Mar 2024 - Aug 2024</span>
+            </div>
+            <div class="card-description">
+                <ul>
+                    <li>Completed Training Course No. (1) for newly appointed engineers at the General Authority for Roads, Bridges, and Land Transport</li>
+                    <li>Focused on enhancing foundational knowledge in civil engineering project management, technical reporting, and public infrastructure systems</li>
+                    <li>Developed soft skills in leadership, communication, and time management within a multidisciplinary engineering team environment</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Nahda University - Assistant Lecturer -->
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h3 class="card-title">Assistant Lecturer</h3>
+                    <p class="card-subtitle">Nahda University (NUB)</p>
+                    <p class="card-location"><i class="fas fa-map-marker-alt"></i> Bani Suwayf, Egypt</p>
+                </div>
+                <span class="card-date">Sep 2022 - Oct 2023</span>
+            </div>
+            <div class="card-description">
+                <p><strong>Responsibilities:</strong></p>
+                <ul>
+                    <li>Conducted laboratory experiments and supervised practical sessions for undergraduate courses</li>
+                    <li>Delivered hands-on training in Software Applications: Civil 3D, Excel, Primavera</li>
+                    <li>Supervised Engineering Laboratories: Fluid Mechanics, Hydraulics, Surveying, Soil Mechanics, and Highway Materials</li>
+                    <li>Assisted in teaching and practical components of civil engineering courses including:
+                        <ul style="list-style-type: circle; margin-left: 2rem;">
+                            <li>Highway Engineering</li>
+                            <li>Transportation and Traffic Engineering</li>
+                            <li>Public Works Projects</li>
+                            <li>Project Management</li>
+                            <li>Hydraulics Engineering</li>
+                            <li>Design of Irrigation Systems</li>
+                            <li>Topographic and Photogrammetric Surveying</li>
+                            <li>Sanitary and Environmental Engineering</li>
+                            <li>Fluid Mechanics</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Nahda University - Head of Scheduling -->
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h3 class="card-title">Head of Scheduling Committee – Civil Engineering Department</h3>
+                    <p class="card-subtitle">Nahda University (NUB)</p>
+                    <p class="card-location"><i class="fas fa-map-marker-alt"></i> Bani Suwayf, Egypt</p>
+                </div>
+                <span class="card-date">Mar 2019 - Sep 2022</span>
+            </div>
+            <div class="card-description">
+                <ul>
+                    <li>Led the development and coordination of academic schedules for the Civil Engineering Department</li>
+                    <li>Ensured alignment of course schedules with departmental and university-wide academic calendars and resource availability</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Nahda University - Teaching Assistant -->
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h3 class="card-title">Teaching Assistant</h3>
+                    <p class="card-subtitle">Nahda University (NUB)</p>
+                    <p class="card-location"><i class="fas fa-map-marker-alt"></i> Bani Suwayf, Egypt</p>
+                </div>
+                <span class="card-date">Oct 2018 - Sep 2022</span>
+            </div>
+            <div class="card-description">
+                <ul>
+                    <li>Supported instruction and supervised student activities in Highway Engineering and other civil engineering subjects</li>
+                    <li>Assisted in laboratory and practical training sessions, and provided academic guidance to undergraduate students</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Nahda University - Students Union -->
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h3 class="card-title">Honorary Member – Students Union, Faculty of Engineering & Computer Science</h3>
+                    <p class="card-subtitle">Nahda University (NUB)</p>
+                    <p class="card-location"><i class="fas fa-map-marker-alt"></i> Bani Suwayf, Egypt</p>
+                </div>
+                <span class="card-date">Nov 2016 - Nov 2017</span>
+            </div>
+            <div class="card-description">
+                <ul>
+                    <li>Actively contributed to student representation and engagement initiatives within the Faculty of Engineering & Computer Science at Nahda University</li>
+                    <li>Supported the organization of academic, extracurricular, and community outreach events</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Al-Zaytoonah University -->
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h3 class="card-title">Exchange Student – Engineering Program</h3>
+                    <p class="card-subtitle">Al-Zaytoonah University Of Jordan</p>
+                    <p class="card-location"><i class="fas fa-map-marker-alt"></i> Jordan</p>
+                </div>
+                <span class="card-date">Aug 2016</span>
+            </div>
+            <div class="card-description">
+                <ul>
+                    <li>Participated in an academic exchange program focused on civil and environmental engineering disciplines</li>
+                    <li>Engaged in cross-cultural learning, technical workshops, and academic collaboration with faculty and students</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Orascom Construction -->
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h3 class="card-title">Field Trainer (Internship)</h3>
+                    <p class="card-subtitle">Orascom Construction PLC</p>
+                </div>
+                <span class="card-date">Jun 2016 - Jul 2016</span>
+            </div>
+            <div class="card-description">
+                <ul>
+                    <li>Completed on-site training in construction project execution and safety protocols under professional supervision</li>
+                    <li>Gained hands-on experience in civil engineering field practices, including site supervision, documentation, and quality control</li>
+                    <li>Awarded certifications in technical training and construction site safety</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Universiti Malaysia Perlis -->
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h3 class="card-title">Programme Participant – International Mobility Program</h3>
+                    <p class="card-subtitle">Universiti Malaysia Perlis (UniMAP)</p>
+                    <p class="card-location"><i class="fas fa-map-marker-alt"></i> Malaysia</p>
+                </div>
+                <span class="card-date">Aug 2015 - Sep 2015</span>
+            </div>
+            <div class="card-description">
+                <ul>
+                    <li>Participated in the UniMAP Mobility Programme 2015 in collaboration with Nahda University, organized by the Centre for International Affairsده **الكود كامل** بعد التعديلات المطلوبة على ملفك `paste.txt` بدون حذف أي قسم (Home/About/Experience/Projects/Education/Skills/Publications/Contact) مع:
+
+- Projects تتحول لـ **Gallery** (صور صغيرة داخل كل مشروع) + عند الضغط الصورة **تكبر Lightbox**. [file:15]  
+- الصور مربوطة بنظام أسماء ثابت على GitHub: `assets/projects/project-1/cover.jpg`… [file:15]  
+- Contact أصبح **رسمي واحترافي** ومتناسق ألوانه مع الفورم + إضافة **Contact Me Form (Formspree)** داخل نفس القسم. [file:15]
+
+انسخ الملف التالي واستبدل به `index.html` بالكامل:
+
+```html
+<!DOCTYPE html>
+<html lang="ar" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amr Mansour Muhammad Rashad - Professional Portfolio</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            /* Modern Color Palette */
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --success-gradient: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            --dark-gradient: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+            
+            --primary-color: #667eea;
+            --secondary-color: #764ba2;
+            --accent-color: #00d4ff;
+            --dark-bg: #0f172a;
+            --light-bg: #f8fafc;
+            --white: #ffffff;
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+            --border-color: #e2e8f0;
+            
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.04);
+            --shadow-md: 0 4px 20px rgba(0,0,0,0.08);
+            --shadow-lg: 0 10px 40px rgba(102, 126, 234, 0.15);
+            --shadow-xl: 0 20px 60px rgba(102, 126, 234, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background: var(--light-bg);
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+        }
+
+        .animated-bg::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            top: -200px;
+            right: -200px;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .animated-bg::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(118, 75, 162, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            bottom: -100px;
+            left: -100px;
+            animation: float 15s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(30px, -50px) rotate(120deg); }
+            66% { transform: translate(-20px, 20px) rotate(240deg); }
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.2rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-gradient);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 2rem 60px;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero-text .subtitle {
+            font-size: 1.3rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease 0.2s backwards;
+        }
+
+        .hero-text p {
+            font-size: 1.05rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+            animation: fadeInUp 0.8s ease 0.4s backwards;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            animation: fadeInUp 0.8s ease 0.6s backwards;
+        }
+
+        .btn {
+            padding: 0.9rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-primary {
+            background: var(--primary-gradient);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* Profile Image */
+        .profile-container {
+            position: relative;
+            animation: fadeInRight 1s ease;
+        }
+
+        .profile-image-wrapper {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            margin: 0 auto;
+        }
+
+        .profile-image-wrapper::before {
+            content: '';
+            position: absolute;
+            inset: -20px;
+            background: var(--primary-gradient);
+            border-radius: 50%;
+            animation: rotate 10s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .profile-image {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 10px solid white;
+            box-shadow: var(--shadow-xl);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Social Links */
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .social-links a:hover {
+            background: var(--primary-gradient);
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 80px 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title .underline {
+            width: 80px;
+            height: 4px;
+            background: var(--primary-gradient);
+            margin: 0 auto;
+            border-radius: 2px;
+        }
+
+        /* Cards */
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.3rem;
+        }
+
+        .card-subtitle {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-date {
+            background: var(--accent-gradient);
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .card-location {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-description {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        .card-description ul {
+            margin-left: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .card-description li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Projects Grid (keep original layout) */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: all 0.4s ease;
+            border: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        /* NEW: Remove big hero image area for projects (we'll use gallery thumbs) */
+        .project-image-container {
+            display: none;
+        }
+
+        .project-overlay { display:none; }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-number {
+            display: inline-block;
+            background: var(--primary-gradient);
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-content h3 {
+            color: var(--text-dark);
+            font-size: 1.4rem;
+            margin-bottom: 0.75rem;
+            font-weight: 700;
+        }
+
+        .project-content p {
+            color: var(--text-light);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .project-tag {
+            background: linear-gradient(135deg, #f6f8fb 0%, #e9ecef 100%);
+            color: var(--text-dark);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid var(--border-color);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
+            flex: 1;
+            text-align: center;
+            padding: 0.7rem 1rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .project-link-primary {
+            background: var(--primary-gradient);
+            color: white;
+        }
+
+        .project-link-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .project-link-secondary {
+            background: white;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .project-link-secondary:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* NEW: Project Gallery (small images + click to enlarge) */
+        .project-gallery{
+            display:grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin: 14px 0 18px;
+        }
+
+        .project-thumb{
+            border-radius: 14px;
+            overflow:hidden;
+            cursor:pointer;
+            background: #eef2ff;
+            border: 1px solid rgba(0,0,0,0.06);
+            aspect-ratio: 4 / 3;
+            transition: transform .2s ease, box-shadow .2s ease;
+        }
+
+        .project-thumb:hover{
+            transform: translateY(-2px);
+            box-shadow: 0 14px 26px rgba(15,23,42,0.12);
+        }
+
+        .project-thumb img{
+            width:100%;
+            height:100%;
+            object-fit:cover;
+            display:block;
+        }
+
+        .project-thumb.more{
+            position:relative;
+        }
+        .project-thumb.more::after{
+            content: attr(data-more);
+            position:absolute;
+            inset:0;
+            background: rgba(0,0,0,0.55);
+            color:#fff;
+            font-weight:800;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-size: 1.05rem;
+        }
+
+        /* Lightbox */
+        .lightbox{
+            position:fixed;
+            inset:0;
+            display:none;
+            align-items:center;
+            justify-content:center;
+            background: rgba(5, 10, 20, 0.86);
+            z-index:9999;
+            padding: 16px;
+        }
+        .lightbox.open{ display:flex; }
+
+        .lightbox-dialog{
+            width: min(1100px, 100%);
+            background: #0b1220;
+            border: 1px solid rgba(255,255,255,0.10);
+            border-radius: 14px;
+            overflow:hidden;
+            box-shadow: 0 30px 90px rgba(0,0,0,0.55);
+        }
+
+        .lightbox-top{
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            gap:10px;
+            padding: 12px 14px;
+            background: rgba(255,255,255,0.06);
+            color: #e5e7eb;
+        }
+
+        .lightbox-title{
+            font-weight:800;
+            font-size: 0.95rem;
+        }
+
+        .lightbox-close{
+            border:0;
+            background: transparent;
+            color: #e5e7eb;
+            font-size: 20px;
+            cursor:pointer;
+            padding: 6px 10px;
+            border-radius: 10px;
+        }
+        .lightbox-close:hover{ background: rgba(255,255,255,0.10); }
+
+        .lightbox-main{
+            position:relative;
+            background:#000;
+        }
+
+        .lightbox-main img{
+            width:100%;
+            height: min(72vh, 760px);
+            object-fit: contain;
+            display:block;
+        }
+
+        .lightbox-nav{
+            position:absolute;
+            top:50%;
+            transform: translateY(-50%);
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.18);
+            background: rgba(15,23,42,0.55);
+            color:#fff;
+            cursor:pointer;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-size: 18px;
+        }
+        .lightbox-nav:hover{ background: rgba(15,23,42,0.78); }
+        .lightbox-prev{ left: 12px; }
+        .lightbox-next{ right: 12px; }
+
+        .lightbox-thumbs{
+            display:flex;
+            gap: 10px;
+            padding: 12px;
+            overflow:auto;
+            background: #0b1220;
+        }
+
+        .lightbox-thumbs img{
+            width: 86px;
+            height: 56px;
+            object-fit: cover;
+            border-radius: 10px;
+            cursor:pointer;
+            opacity: .72;
+            border: 2px solid transparent;
+        }
+        .lightbox-thumbs img.active{
+            opacity: 1;
+            border-color: var(--accent-color);
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .skill-category h3 {
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-category h3 i {
+            color: var(--primary-color);
+        }
+
+        .skill-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, #f6f8fb 0%, #e9ecef 100%);
+            color: var(--text-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            margin: 0.3rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .skill-tag:hover {
+            background: var(--primary-gradient);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Contact Section (Professional + match form) */
+        #contact{
+            background: #f6f8fb;
+            border-radius: 24px;
+        }
+
+        .contact-layout{
+            display:grid;
+            grid-template-columns: 1fr 1.15fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-panel{
+            background: #fff;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+        }
+
+        .contact-panel h3{
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+            font-size: 1.25rem;
+        }
+
+        .contact-panel p{
+            color: var(--text-light);
+            margin-bottom: 1.25rem;
+            line-height: 1.8;
+        }
+
+        .contact-list{
+            display:grid;
+            gap: 12px;
+        }
+
+        .contact-line{
+            display:flex;
+            gap: 12px;
+            align-items:flex-start;
+            padding: 12px;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            background: #fff;
+        }
+
+        .contact-line i{
+            width: 42px;
+            height: 42px;
+            border-radius: 14px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            background: rgba(102,126,234,0.10);
+            color: var(--primary-color);
+            border: 1px solid rgba(102,126,234,0.18);
+            flex: 0 0 auto;
+            margin-top: 2px;
+        }
+
+        .contact-line .label{
+            font-weight:800;
+            color: var(--text-dark);
+            margin-bottom: 2px;
+        }
+
+        .contact-line .value,
+        .contact-line a{
+            color: var(--text-light);
+            text-decoration:none;
+        }
+        .contact-line a:hover{ color: var(--primary-color); text-decoration: underline; }
+
+        /* Formspree Form Styles */
+        .fs-form{
+            background: #fff;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+        }
+
+        .fs-form h3{
+            color: var(--text-dark);
+            margin-bottom: 0.4rem;
+            font-size: 1.25rem;
+        }
+
+        .fs-hint{
+            color: var(--text-light);
+            margin-bottom: 1.25rem;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .fs-field{ margin-bottom: 14px; }
+
+        .fs-label{
+            display:block;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 6px;
+        }
+
+        .fs-input, .fs-textarea{
+            width:100%;
+            padding: 12px 12px;
+            border-radius: 14px;
+            border: 1px solid rgba(0,0,0,0.12);
+            outline:none;
+            font-size: 0.98rem;
+            transition: box-shadow .2s ease, border-color .2s ease;
+        }
+
+        .fs-input:focus, .fs-textarea:focus{
+            border-color: rgba(102,126,234,0.55);
+            box-shadow: 0 0 0 4px rgba(102,126,234,0.14);
+        }
+
+        .fs-textarea{
+            min-height: 140px;
+            resize: vertical;
+        }
+
+        .fs-description{
+            color: var(--text-light);
+            margin-top: 6px;
+            font-size: 0.9rem;
+        }
+
+        .fs-button-group{ margin-top: 10px; }
+
+        .fs-button{
+            width:100%;
+            border:0;
+            border-radius: 999px;
+            padding: 12px 16px;
+            font-weight: 800;
+            cursor:pointer;
+            background: var(--primary-gradient);
+            color:#fff;
+            box-shadow: 0 10px 26px rgba(102,126,234,0.25);
+            transition: transform .2s ease, box-shadow .2s ease;
+        }
+
+        .fs-button:hover{
+            transform: translateY(-2px);
+            box-shadow: 0 16px 34px rgba(102,126,234,0.30);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-gradient);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .hero-text h1 { font-size: 2.5rem; }
+            .profile-image-wrapper { width: 300px; height: 300px; }
+            nav ul { gap: 1rem; }
+            .cta-buttons { justify-content: center; }
+            .projects-grid { grid-template-columns: 1fr; }
+
+            .project-gallery{ grid-template-columns: repeat(3, 1fr); }
+            .contact-layout{ grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 600px) {
+            nav ul { display: none; }
+            .hero-text h1 { font-size: 2rem; }
+            .hero-text .subtitle { font-size: 1.1rem; }
+            .profile-image-wrapper { width: 250px; height: 250px; }
+            .section-title h2 { font-size: 2rem; }
+            .projects-grid { gap: 1.5rem; }
+            .project-content { padding: 1.5rem; }
+
+            .project-gallery{ grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
 </head>
 
 <body>
-  <div class="animated-bg"></div>
+    <!-- Animated Background -->
+    <div class="animated-bg"></div>
 
-  <!-- Header -->
-  <header>
-    <div class="container">
-      <div class="nav">
-        <div class="brand">AMR</div>
-        <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact" class="cta">Get In Touch</a></li>
-        </ul>
-      </div>
-    </div>
-  </header>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">AMR</div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <!-- Hero -->
-  <section class="hero" id="home">
-    <div class="container">
-      <div class="hero-grid">
-        <div>
-          <h1>Amr Mansour Muhammad Rashad</h1>
-          <div class="subtitle">Data Analyst (Excel, SQL, Power BI, Python) | Road Construction Engineer</div>
-          <p>
-            I build clean, decision-ready dashboards and reports by transforming raw data into actionable insights.
-            My work focuses on Excel analytics, Power Query automation, KPI tracking, and professional data visualization.
-          </p>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Amr Mansour Muhammad Rashad</h1>
+                <p class="subtitle">Road Construction Engineer | Data Analyst | PhD Candidate</p>
+                <p>
+                    Passionate civil engineer specializing in highway and airport engineering with expertise in data analytics, 
+                    pavement design, and infrastructure optimization. Currently pursuing doctoral research at Aswan University 
+                    while serving at the Ministry of Transport.
+                </p>
+                <div class="cta-buttons">
+                    <a href="#contact" class="btn btn-primary">
+                        <i class="fas fa-envelope"></i> Get In Touch
+                    </a>
+                    <a href="#projects" class="btn btn-secondary">
+                        <i class="fas fa-briefcase"></i> View Projects
+                    </a>
+                </div>
+                <div class="social-links">
+                    <a href="mailto:amr.mansour.rashad@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+                    <a href="https://www.linkedin.com/in/amrmansourrashad" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="http://bebestengineer.blogspot.com.eg/" target="_blank" title="Blog"><i class="fas fa-blog"></i></a>
+                    <a href="tel:+201555117366" title="Phone"><i class="fas fa-phone"></i></a>
+                </div>
+            </div>
+            <div class="profile-container">
+                <div class="profile-image-wrapper">
+                    <img src="https://raw.githubusercontent.com/amrmansourrashad/amrmansourrashad.github.io/main/your-image.jpg" 
+                         alt="Amr Mansour Muhammad Rashad" 
+                         class="profile-image"
+                         onerror="this.src='https://ui-avatars.com/api/?name=Amr+Mansour&size=400&background=667eea&color=fff&bold=true&font-size=0.4'">
+                </div>
+            </div>
+        </div>
+    </section>
 
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#projects"><i class="fa-solid fa-layer-group"></i> View Projects</a>
-            <a class="btn btn-secondary" href="#contact"><i class="fa-solid fa-envelope"></i> Contact Me</a>
-          </div>
+    <!-- About Section -->
+    <section id="about">
+        <div class="section-title">
+            <h2>About Me</h2>
+            <div class="underline"></div>
+        </div>
+        <div class="card">
+            <p style="color: var(--text-light); line-height: 1.8; text-align: justify;">
+                As a seasoned Roads Construction Engineer at the Ministry of Transport, I apply my academic and professional 
+                expertise—anchored by a Master's degree in Highway Engineering—to advance roadway safety, operational efficiency, 
+                and infrastructure resilience across Egypt. My engineering journey commenced with a Bachelor's degree in Civil 
+                Engineering from Nahda University, where I also served as an Assistant Lecturer.
+                <br><br>
+                At the General Authority for Roads and Bridges, I contribute to the successful execution of infrastructure projects 
+                through a combination of technical proficiency, strategic contract negotiation, and effective teamwork. Currently 
+                participating in the Digital Egypt Pioneers Initiative (DEPI) in Data Analytics, I am focused on integrating modern 
+                data science techniques with traditional civil engineering to drive innovation in infrastructure development.
+            </p>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="section-title">
+            <h2>Professional Experience</h2>
+            <div class="underline"></div>
         </div>
 
-        <div>
-          <div class="profile-wrap">
-            <img class="profile-img"
-              src="https://raw.githubusercontent.com/amrmansourrashad/amrmansourrashad.github.io/main/your-image.jpg"
-              alt="Amr Mansour Muhammad Rashad"
-              onerror="this.src='https://ui-avatars.com/api/?name=Amr+Mansour&size=600&background=667eea&color=fff&bold=true&font-size=0.32'">
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- About (short) -->
-  <section id="about">
-    <div class="container">
-      <div class="section-title">
-        <h2>About Me</h2>
-        <div class="underline"></div>
-      </div>
-
-      <div class="card">
-        <div class="card-description">
-          Roads Construction Engineer at the Ministry of Transport (Egypt) and a PhD candidate in Highway & Airport Engineering.
-          I’m expanding my analytics expertise through DEPI (Data Analytics track), focusing on data cleaning, KPI reporting,
-          and interactive dashboards in Microsoft Excel and Power BI.
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Projects Gallery -->
-  <section id="projects">
-    <div class="container">
-      <div class="section-title">
-        <h2>Projects Gallery</h2>
-        <div class="underline"></div>
-      </div>
-
-      <div class="card">
-        <div class="card-title">Project 1 — Interactive Excel Dashboard (Training)</div>
-        <div class="card-description">
-          My first milestone in Data Analytics! Built an interactive dashboard using Microsoft Excel as part of the Digital Egypt Pioneers Initiative (DEPI).
+        <!-- Current Position -->
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h3 class="card-title">Road Construction Engineer</h3>
+                    <p class="card-subtitle">Ministry of Transport – General Authority for Roads and Bridges, Egypt</p>
+                    <p class="card-location"><i class="fas fa-map-marker-alt"></i> Cairo, Egypt</p>
+                </div>
+                <span class="card-date">Sep 2024 - Present</span>
+            </div>
+            <div class="card-description">
+                <p>Working as a Roads Construction Engineer at the Central Administration for Roads Construction and Maintenance, part of the General Authority for Roads and Bridges.</p>
+                <ul>
+                    <li>Responsible for supervising and managing the execution of national road construction and maintenance projects</li>
+                    <li>Engaged in preparing technical specifications, quantity estimates, and contract documentation</li>
+                    <li>Participates in tender evaluation, project coordination, and quality control on-site</li>
+                </ul>
+            </div>
         </div>
 
-        <div class="project-gallery-grid"
-          data-project-title="Project 1 — Interactive Excel Dashboard (Training)"
-          data-base="assets/projects/project-1/"
-          data-images="cover.jpg,1.jpg,2.jpg,3.jpg,4.jpg,5.jpg">
+        <!-- DEPI -->
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h3 class="card-title">Internship Trainee - Data Analytics Track</h3>
+                    <p class="card-subtitle">Digital Egypt Pioneers Initiative (DEPI) - Ministry of Communications and Information Technology</p>
+                    <p class="card-location"><i class="fas fa-map-marker-alt"></i> Cairo, Egypt</p>
+                </div>
+                <span class="card-date">Nov 2025 - Present</span>
+            </div>
+            <div class="card-description">
+                <p>Joined the Digital Egypt Pioneers Initiative (DEPI) in the Data Analytics track, under the auspices of the Ministry of Communications and Information Technology (MCIT).</p>
+                <ul>
+                    <li>Mastering data mining, visualization, and statistical analysis to enhance decision-making in infrastructure projects</li>
+                    <li>Applying advanced data insights to research in Highway & Airport Engineering</li>
+                    <li>Optimizing construction management processes using data-driven strategies</li>
+                </ul>
+            </div>
         </div>
-      </div>
 
-      <div class="card">
-        <div class="card-title">Project 2 — Flight Delay Dashboard (Training)</div>
-        <div class="card-description">
-          Excel dashboard analyzing delays and KPIs with PivotTables, charts, and slicers (training project).
+        <!-- NTI AI Ambassador -->
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h3 class="card-title">AI Ambassador Intern</h3>
+                    <p class="card-subtitle">National Telecommunication Institute (NTI)</p>
+                    <p class="card-location"><i class="fas fa-map-marker-alt"></i> Cairo, Egypt</p>
+                </div>
+                <span class="card-date">Apr 2025 - May 2025</span>
+            </div>
+            <div class="card-description">
+                <p>Selected as an AI Ambassador in a collaborative program between NTI and Engineers for a Sustainable Egypt (ESE). The program focused on leveraging Artificial Intelligence and digital transformation to support sustainable development goals within the engineering sector.</p>
+            </div>
         </div>
 
-        <div class="project-gallery-grid"
-          data-project-title="Project 2 — Flight Delay Dashboard (Training)"
-          data-base="assets/projects/project-2/"
-          data-images="cover.jpg,1.jpg,2.jpg,3.jpg,4.jpg,5.jpg">
+        <!-- Egyptian Military Academy -->
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h3 class="card-title">Engineering Trainee – Internship Program</h3>
+                    <p class="card-subtitle">Egyptian Military Academy</p>
+                    <p class="card-location"><i class="fas fa-map-marker-alt"></i> Cairo, Egypt</p>
+                </div>
+                <span class="card-date">Mar 2024 - Aug 2024</span>
+            </div>
+            <div class="card-description">
+                <ul>
+                    <li>Completed Training Course No. (1) for newly appointed engineers at the General Authority for Roads, Bridges, and Land Transport</li>
+                    <li>Focused on enhancing foundational knowledge in civil engineering project management, technical reporting, and public infrastructure systems</li>
+                    <li>Developed soft skills in leadership, communication, and time management within a multidisciplinary engineering team environment</li>
+                </ul>
+            </div>
         </div>
-      </div>
 
-      <div class="card">
-        <div class="card-title">Project 3</div>
-        <div class="card-description">Upload images to: assets/projects/project-3/</div>
-        <div class="project-gallery-grid"
-          data-project-title="Project 3"
-          data-base="assets/projects/project-3/"
-          data-images="cover.jpg,1.jpg,2.jpg,3.jpg,4.jpg,5.jpg">
+        <!-- Nahda University - Assistant Lecturer -->
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h3 class="card-title">Assistant Lecturer</h3>
+                    <p class="card-subtitle">Nahda University (NUB)</p>
+                    <p class="card-location"><i class="fas fa-map-marker-alt"></i> Bani Suwayf, Egypt</p>
+                </div>
+                <span class="card-date">Sep 2022 - Oct 2023</span>
+            </div>
+            <div class="card-description">
+                <p><strong>Responsibilities:</strong></p>
+                <ul>
+                    <li>Conducted laboratory experiments and supervised practical sessions for undergraduate courses</li>
+                    <li>Delivered hands-on training in Software Applications: Civil 3D, Excel, Primavera</li>
+                    <li>Supervised Engineering Laboratories: Fluid Mechanics, Hydraulics, Surveying, Soil Mechanics, and Highway Materials</li>
+                    <li>Assisted in teaching and practical components of civil engineering courses including:
+                        <ul style="list-style-type: circle; margin-left: 2rem;">
+                            <li>Highway Engineering</li>
+                            <li>Transportation and Traffic Engineering</li>
+                            <li>Public Works Projects</li>
+                            <li>Project Management</li>
+                            <li>Hydraulics Engineering</li>
+                            <li>Design of Irrigation Systems</li>
+                            <li>Topographic and Photogrammetric Surveying</li>
+                            <li>Sanitary and Environmental Engineering</li>
+                            <li>Fluid Mechanics</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
         </div>
-      </div>
 
-      <div class="card">
-        <div class="card-title">Project 4</div>
-        <div class="card-description">Upload images to: assets/projects/project-4/</div>
-        <div class="project-gallery-grid"
-          data-project-title="Project 4"
-          data-base="assets/projects/project-4/"
-          data-images="cover.jpg,1.jpg,2.jpg,3.jpg,4.jpg,5.jpg">
+        <!-- Nahda University - Head of Scheduling -->
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h3 class="card-title">Head of Scheduling Committee – Civil Engineering Department</h3>
+                    <p class="card-subtitle">Nahda University (NUB)</p>
+                    <p class="card-location"><i class="fas fa-map-marker-alt"></i> Bani Suwayf, Egypt</p>
+                </div>
+                <span class="card-date">Mar 2019 - Sep 2022</span>
+            </div>
+            <div class="card-description">
+                <ul>
+                    <li>Led the development and coordination of academic schedules for the Civil Engineering Department</li>
+                    <li>Ensured alignment of course schedules with departmental and university-wide academic calendars and resource availability</li>
+                </ul>
+            </div>
         </div>
-      </div>
 
-      <div class="card">
-        <div class="card-title">Project 5</div>
-        <div class="card-description">Upload images to: assets/projects/project-5/</div>
-        <div class="project-gallery-grid"
-          data-project-title="Project 5"
-          data-base="assets/projects/project-5/"
-          data-images="cover.jpg,1.jpg,2.jpg,3.jpg,4.jpg,5.jpg">
+        <!-- Nahda University - Teaching Assistant -->
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h3 class="card-title">Teaching Assistant</h3>
+                    <p class="card-subtitle">Nahda University (NUB)</p>
+                    <p class="card-location"><i class="fas fa-map-marker-alt"></i> Bani Suwayf, Egypt</p>
+                </div>
+                <span class="card-date">Oct 2018 - Sep 2022</span>
+            </div>
+            <div class="card-description">
+                <ul>
+                    <li>Supported instruction and supervised student activities in Highway Engineering and other civil engineering subjects</li>
+                    <li>Assisted in laboratory and practical training sessions, and provided academic guidance to undergraduate students</li>
+                </ul>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Contact -->
-  <section id="contact">
-    <div class="container">
-      <div class="section-title">
-        <h2>Get In Touch</h2>
-        <div class="underline"></div>
-      </div>
+        <!-- Nahda University - Students Union -->
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h3 class="card-title">Honorary Member – Students Union, Faculty of Engineering & Computer Science</h3>
+                    <p class="card-subtitle">Nahda University (NUB)</p>
+                    <p class="card-location"><i class="fas fa-map-marker-alt"></i> Bani Suwayf, Egypt</p>
+                </div>
+                <span class="card-date">Nov 2016 - Nov 2017</span>
+            </div>
+            <div class="card-description">
+                <ul>
+                    <li>Actively contributed to student representation and engagement initiatives within the Faculty of Engineering & Computer Science at Nahda University</li>
+                    <li>Supported the organization of academic, extracurricular, and community outreach events</li>
+                </ul>
+            </div>
+        </div>
 
-      <div class="contact-grid">
-        <!-- Left: Professional contact panel -->
-        <div class="contact-panel">
-          <h3>Contact Information</h3>
-          <p>
-            If you have a project in mind (dashboards, reporting, or data cleaning), feel free to reach out.
-            I typically respond within 24 hours.
-          </p>
+        <!-- Al-Zaytoonah University -->
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h3 class="card-title">Exchange Student – Engineering Program</h3>
+                    <p class="card-subtitle">Al-Zaytoonah University Of Jordan</p>
+                    <p class="card-location"><i class="fas fa-map-marker-alt"></i> Jordan</p>
+                </div>
+                <span class="card-date">Aug 2016</span>
+            </div>
+            <div class="card-description">
+                <ul>
+                    <li>Participated in an academic exchange program focused on civil and environmental engineering disciplines</li>
+                    <li>Engaged in cross-cultural learning, technical workshops, and academic collaboration with faculty and students</li>
+                </ul>
+            </div>
+        </div>
 
-          <div class="contact-items">
-            <div class="contact-item">
-              <i class="fa-solid fa-envelope"></i>
-              <div>
-                <div class="label">Email</div>
-                <div class="value"><a href="mailto:amr.mansour.rashad@gmail.com">amr.mansour.rashad@gmail.com</a></div>
-              </div>
+        <!-- Orascom Construction -->
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h3 class="card-title">Field Trainer (Internship)</h3>
+                    <p class="card-subtitle">Orascom Construction PLC</p>
+                </div>
+                <span class="card-date">Jun 2016 - Jul 2016</span>
+            </div>
+            <div class="card-description">
+                <ul>
+                    <li>Completed on-site training in construction project execution and safety protocols under professional supervision</li>
+                    <li>Gained hands-on experience in civil engineering field practices, including site supervision, documentation, and quality control</li>
+                    <li>Awarded certifications in technical training and construction site safety</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Universiti Malaysia Perlis -->
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h3 class="card-title">Programme Participant – International Mobility Program</h3>
+                    <p class="card-subtitle">Universiti Malaysia Perlis (UniMAP)</p>
+                    <p class="card-location"><i class="fas fa-map-marker-alt"></i> Malaysia</p>
+                </div>
+                <span class="card-date">Aug 2015 - Sep 2015</span>
+            </div>
+            <div class="card-description">
+                <ul>
+                    <li>Participated in the UniMAP Mobility Programme 2015 in collaboration with Nahda University, organized by the Centre for International Affairs (CIA), UniMAP</li>
+                    <li>Involved in academic exchange, cultural immersion, and technical site visits focused on international engineering education</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="section-title">
+            <h2>Featured Projects</h2>
+            <div class="underline"></div>
+        </div>
+
+        <div class="projects-grid">
+            <!-- Project 1 -->
+            <div class="project-card">
+                <div class="project-content">
+                    <span class="project-number">01</span>
+                    <h3>Interactive Excel Dashboard</h3>
+                    <p>
+                        My first milestone in Data Analytics! Built an interactive dashboard using Microsoft Excel as part 
+                        of the Digital Egypt Pioneers Initiative (DEPI). This project demonstrates how raw data can be 
+                        transformed into meaningful insights through effective visualization and analysis techniques.
+                    </p>
+
+                    <!-- Gallery: upload images to assets/projects/project-1/ -->
+                    <div class="project-gallery"
+                         data-title="Interactive Excel Dashboard (Training)"
+                         data-base="assets/projects/project-1/"
+                         data-images="cover.jpg,1.jpg,2.jpg,3.jpg,4.jpg,5.jpg"></div>
+
+                    <div class="project-tags">
+                        <span class="project-tag">Excel</span>
+                        <span class="project-tag">Data Analytics</span>
+                        <span class="project-tag">Dashboard Design</span>
+                        <span class="project-tag">Data Visualization</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#"
+                           class="project-link project-link-primary"
+                           onclick="openProjectLightbox(this); return false;"
+                           data-lb-title="Interactive Excel Dashboard (Training)"
+                           data-lb-base="assets/projects/project-1/"
+                           data-lb-images="cover.jpg,1.jpg,2.jpg,3.jpg,4.jpg,5.jpg">
+                            <i class="fas fa-eye"></i> View Gallery
+                        </a>
+                        <a href="https://github.com/amrmansourrashad/amrmansourrashad.github.io"
+                           target="_blank"
+                           class="project-link project-link-secondary">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                    </div>
+                </div>
             </div>
 
-            <div class="contact-item">
-              <i class="fa-solid fa-phone"></i>
-              <div>
-                <div class="label">Phone</div>
-                <div class="value"><a href="tel:+201555117366">+20 15 5511 7366</a></div>
-              </div>
+            <!-- Project 2 -->
+            <div class="project-card">
+                <div class="project-content">
+                    <span class="project-number">02</span>
+                    <h3>Flight Delay Dashboard - Team Project</h3>
+                    <p>
+                        Comprehensive analysis of domestic flight trends in 2024. Analyzed over 7 million flight records 
+                        to identify root causes of delays. Tracked KPIs including On-Time Arrival (~79%), Cancellation 
+                        Rates, and Average Delays. Features dynamic filtering by Date, State, and Origin with advanced 
+                        pivot tables and data cleaning techniques.
+                    </p>
+
+                    <!-- Gallery: upload images to assets/projects/project-2/ -->
+                    <div class="project-gallery"
+                         data-title="Flight Delay Dashboard (Team Project)"
+                         data-base="assets/projects/project-2/"
+                         data-images="cover.jpg,1.jpg,2.jpg,3.jpg,4.jpg,5.jpg"></div>
+
+                    <div class="project-tags">
+                        <span class="project-tag">Excel</span>
+                        <span class="project-tag">Big Data Analysis</span>
+                        <span class="project-tag">Pivot Tables</span>
+                        <span class="project-tag">Team Collaboration</span>
+                        <span class="project-tag">KPI Tracking</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#"
+                           class="project-link project-link-primary"
+                           onclick="openProjectLightbox(this); return false;"
+                           data-lb-title="Flight Delay Dashboard (Team Project)"
+                           data-lb-base="assets/projects/project-2/"
+                           data-lb-images="cover.jpg,1.jpg,2.jpg,3.jpg,4.jpg,5.jpg">
+                            <i class="fas fa-eye"></i> View Gallery
+                        </a>
+                        <a href="https://www.linkedin.com/in/amrmansourrashad"
+                           target="_blank"
+                           class="project-link project-link-secondary">
+                            <i class="fab fa-linkedin"></i> Details
+                        </a>
+                    </div>
+                </div>
             </div>
 
-            <div class="contact-item">
-              <i class="fa-brands fa-linkedin"></i>
-              <div>
-                <div class="label">LinkedIn</div>
-                <div class="value"><a target="_blank" href="https://www.linkedin.com/in/amrmansourrashad">linkedin.com/in/amrmansourrashad</a></div>
-              </div>
+            <!-- Project 3 -->
+            <div class="project-card">
+                <div class="project-content">
+                    <span class="project-number">03</span>
+                    <h3>Highway Design Project</h3>
+                    <p>
+                        Civil engineering project focused on highway design and infrastructure planning. 
+                        Utilized advanced CAD tools for geometric design, pavement analysis, and construction planning.
+                    </p>
+
+                    <div class="project-gallery"
+                         data-title="Highway Design Project"
+                         data-base="assets/projects/project-3/"
+                         data-images="cover.jpg,1.jpg,2.jpg,3.jpg,4.jpg,5.jpg"></div>
+
+                    <div class="project-tags">
+                        <span class="project-tag">Civil 3D</span>
+                        <span class="project-tag">Highway Design</span>
+                        <span class="project-tag">AutoCAD</span>
+                        <span class="project-tag">Infrastructure</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#"
+                           class="project-link project-link-primary"
+                           onclick="openProjectLightbox(this); return false;"
+                           data-lb-title="Highway Design Project"
+                           data-lb-base="assets/projects/project-3/"
+                           data-lb-images="cover.jpg,1.jpg,2.jpg,3.jpg,4.jpg,5.jpg">
+                            <i class="fas fa-eye"></i> View Gallery
+                        </a>
+                        <a href="#"
+                           class="project-link project-link-secondary">
+                            <i class="fab fa-github"></i> Code
+                        </a>
+                    </div>
+                </div>
             </div>
 
-            <div class="contact-item">
-              <i class="fa-solid fa-globe"></i>
-              <div>
-                <div class="label">Blog</div>
-                <div class="value"><a target="_blank" href="https://bebestengineer.blogspot.com.eg/">bebestengineer.blogspot.com.eg</a></div>
-              </div>
+            <!-- Project 4 -->
+            <div class="project-card">
+                <div class="project-content">
+                    <span class="project-number">04</span>
+                    <h3>Slope Stability Analysis Research</h3>
+                    <p>
+                        Master's thesis project on optimized numerical models of slope stability for road embankments. 
+                        Applied Limit Equilibrium Method (LEM) and advanced geotechnical analysis techniques using specialized software.
+                    </p>
+
+                    <div class="project-gallery"
+                         data-title="Slope Stability Analysis Research"
+                         data-base="assets/projects/project-4/"
+                         data-images="cover.jpg,1.jpg,2.jpg,3.jpg,4.jpg,5.jpg"></div>
+
+                    <div class="project-tags">
+                        <span class="project-tag">MATLAB</span>
+                        <span class="project-tag">GeoStudio</span>
+                        <span class="project-tag">Research</span>
+                        <span class="project-tag">Geotechnical Engineering</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#"
+                           class="project-link project-link-primary"
+                           onclick="openProjectLightbox(this); return false;"
+                           data-lb-title="Slope Stability Analysis Research"
+                           data-lb-base="assets/projects/project-4/"
+                           data-lb-images="cover.jpg,1.jpg,2.jpg,3.jpg,4.jpg,5.jpg">
+                            <i class="fas fa-eye"></i> View Gallery
+                        </a>
+                        <a href="#publications"
+                           class="project-link project-link-secondary">
+                            <i class="fas fa-file-alt"></i> Publications
+                        </a>
+                    </div>
+                </div>
             </div>
-          </div>
+
+            <!-- Project 5 -->
+            <div class="project-card">
+                <div class="project-content">
+                    <span class="project-number">05</span>
+                    <h3>Infrastructure Data Analytics</h3>
+                    <p>
+                        Integrating data analytics with civil engineering to optimize construction management processes. 
+                        Focus on applying advanced data insights to highway and airport engineering projects.
+                    </p>
+
+                    <div class="project-gallery"
+                         data-title="Infrastructure Data Analytics"
+                         data-base="assets/projects/project-5/"
+                         data-images="cover.jpg,1.jpg,2.jpg,3.jpg,4.jpg,5.jpg"></div>
+
+                    <div class="project-tags">
+                        <span class="project-tag">Python</span>
+                        <span class="project-tag">Data Analysis</span>
+                        <span class="project-tag">Infrastructure</span>
+                        <span class="project-tag">Optimization</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#"
+                           class="project-link project-link-primary"
+                           onclick="openProjectLightbox(this); return false;"
+                           data-lb-title="Infrastructure Data Analytics"
+                           data-lb-base="assets/projects/project-5/"
+                           data-lb-images="cover.jpg,1.jpg,2.jpg,3.jpg,4.jpg,5.jpg">
+                            <i class="fas fa-eye"></i> View Gallery
+                        </a>
+                        <a href="#"
+                           class="project-link project-link-secondary">
+                            <i class="fab fa-github"></i> Code
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <div class="section-title">
+            <h2>Education</h2>
+            <div class="underline"></div>
         </div>
 
-        <!-- Right: Contact Form (Formspree) -->
-        <form
-          action="https://formspree.io/f/xvzbkrya"
-          class="fs-form"
-          target="_top"
-          method="POST"
-        >
-          <h3>Contact Me Form</h3>
-          <div class="hint">Please share a brief summary of your needs and expected deliverables.</div>
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h3 class="card-title">Doctor of Philosophy (PhD)</h3>
+                    <p class="card-subtitle">Highway and Airport Engineering</p>
+                    <p class="card-location"><i class="fas fa-university"></i> Aswan University</p>
+                </div>
+                <span class="card-date">Dec 2022 - Present</span>
+            </div>
+        </div>
 
-          <div class="fs-field">
-            <label class="fs-label" for="name">Your Name</label>
-            <input class="fs-input" id="name" name="name" required />
-          </div>
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h3 class="card-title">Master's Degree</h3>
+                    <p class="card-subtitle">Highway and Airport Engineering</p>
+                    <p class="card-location"><i class="fas fa-university"></i> Minia University</p>
+                </div>
+                <span class="card-date">Oct 2019 - Sep 2022</span>
+            </div>
+        </div>
 
-          <div class="fs-field">
-            <label class="fs-label" for="email">Email</label>
-            <input class="fs-input" id="email" name="email" type="email" required />
-            <p class="fs-description">This will help me respond to your query via an email.</p>
-          </div>
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h3 class="card-title">Pre-Master</h3>
+                    <p class="card-subtitle">Civil Engineering</p>
+                    <p class="card-location"><i class="fas fa-university"></i> Minia University</p>
+                </div>
+                <span class="card-date">Sep 2018 - Sep 2019</span>
+            </div>
+            <div class="card-description">
+                <p><strong>Grade:</strong> Very Good</p>
+            </div>
+        </div>
 
-          <div class="fs-field">
-            <label class="fs-label" for="message">Message</label>
-            <textarea class="fs-textarea" id="message" name="message" required></textarea>
-            <p class="fs-description">What would you like to discuss?</p>
-          </div>
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <h3 class="card-title">Bachelor of Engineering</h3>
+                    <p class="card-subtitle">Civil Engineering</p>
+                    <p class="card-location"><i class="fas fa-university"></i> Nahda University (NUB)</p>
+                </div>
+                <span class="card-date">Sep 2013 - Sep 2018</span>
+            </div>
+            <div class="card-description">
+                <p><strong>Grade:</strong> Excellent (A+) with Honors | GPA: 3.95/4.0 (93.67%) | Top of Class</p>
+                <p><strong>Graduation Project:</strong> Design of NAHDA Freeway (Grade: 98%)</p>
+            </div>
+        </div>
+    </section>
 
-          <div class="fs-button-group">
-            <button class="fs-button" type="submit">Submit</button>
-          </div>
-        </form>
-      </div>
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="section-title">
+            <h2>Skills & Technologies</h2>
+            <div class="underline"></div>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3><i class="fas fa-code"></i> Data Analytics</h3>
+                <div>
+                    <span class="skill-tag">Advanced Excel</span>
+                    <span class="skill-tag">Power BI</span>
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Data Mining</span>
+                    <span class="skill-tag">Statistical Analysis</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3><i class="fas fa-road"></i> Highway Engineering</h3>
+                <div>
+                    <span class="skill-tag">Road Construction</span>
+                    <span class="skill-tag">Pavement Design</span>
+                    <span class="skill-tag">Traffic Engineering</span>
+                    <span class="skill-tag">Slope Stability</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3><i class="fas fa-drafting-compass"></i> Design Software</h3>
+                <div>
+                    <span class="skill-tag">AutoCAD Civil 3D</span>
+                    <span class="skill-tag">Primavera</span>
+                    <span class="skill-tag">MATLAB</span>
+                    <span class="skill-tag">GeoStudio</span>
+                    <span class="skill-tag">Plaxis 2D</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3><i class="fas fa-robot"></i> Digital Skills</h3>
+                <div>
+                    <span class="skill-tag">Artificial Intelligence</span>
+                    <span class="skill-tag">Digital Transformation</span>
+                    <span class="skill-tag">Project Management</span>
+                    <span class="skill-tag">Sustainable Development</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications Section -->
+    <section id="publications">
+        <div class="section-title">
+            <h2>Publications</h2>
+            <div class="underline"></div>
+        </div>
+        
+        <div class="card">
+            <h3 class="card-subtitle">Optimized Numerical Models of Slope Stability of Roads Embankment Using Limit Equilibrium Method</h3>
+            <p style="color: var(--text-light); margin-top: 0.5rem;">
+                A. M. Rashad, M. D. Hashem, A. Abdel-Halim Mahmoud, and T. E. Mahmoud<br>
+                <em>2nd International Conference on Civil Engineering: Recent Applications and Future Challenges</em>, 2021, pp. 318–329
+            </p>
+        </div>
+
+        <div class="card">
+            <h3 class="card-subtitle">Effect of soil nailing on the slope stability of road embankments under traffic load using the optimized LEM</h3>
+            <p style="color: var(--text-light); margin-top: 0.5rem;">
+                A. M. Rashad, M. D. Hashem, A. Abdel-Halim Mahmoud, and T. E. Mahmoud<br>
+                <em>Journal of Advanced Engineering Trends</em>, 2023, Vol 42, No. 2
+            </p>
+        </div>
+    </section>
+
+    <!-- Contact Section (updated) -->
+    <section id="contact">
+        <div class="section-title">
+            <h2>Get In Touch</h2>
+            <div class="underline"></div>
+        </div>
+
+        <div class="contact-layout">
+            <!-- Contact Information -->
+            <div class="contact-panel">
+                <h3>Contact Information</h3>
+                <p>
+                    For project inquiries (Dashboards, Reporting, Data Cleaning), please use the form or contact me directly.
+                    I typically respond within 24 hours.
+                </p>
+
+                <div class="contact-list">
+                    <div class="contact-line">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <div class="label">Email</div>
+                            <div class="value"><a href="mailto:amr.mansour.rashad@gmail.com">amr.mansour.rashad@gmail.com</a></div>
+                        </div>
+                    </div>
+
+                    <div class="contact-line">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <div class="label">Phone</div>
+                            <div class="value"><a href="tel:+201555117366">+20 15 5511 7366</a></div>
+                        </div>
+                    </div>
+
+                    <div class="contact-line">
+                        <i class="fab fa-linkedin"></i>
+                        <div>
+                            <div class="label">LinkedIn</div>
+                            <div class="value"><a href="https://www.linkedin.com/in/amrmansourrashad" target="_blank">amrmansourrashad</a></div>
+                        </div>
+                    </div>
+
+                    <div class="contact-line">
+                        <i class="fas fa-blog"></i>
+                        <div>
+                            <div class="label">Blog</div>
+                            <div class="value"><a href="http://bebestengineer.blogspot.com.eg/" target="_blank">Be Best Engineering</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Me Form (Formspree) -->
+            <form
+              action="https://formspree.io/f/xvzbkrya"
+              class="fs-form"
+              target="_top"
+              method="POST"
+            >
+              <h3>Contact Me Form</h3>
+              <div class="fs-hint">Please share a brief summary of your needs and expected deliverables.</div>
+
+              <div class="fs-field">
+                <label class="fs-label" for="name">Your Name</label>
+                <input class="fs-input" id="name" name="name" required />
+              </div>
+
+              <div class="fs-field">
+                <label class="fs-label" for="email">Email</label>
+                <input class="fs-input" id="email" name="email" type="email" required />
+                <p class="fs-description">
+                  This will help me respond to your query via an email.
+                </p>
+              </div>
+
+              <div class="fs-field">
+                <label class="fs-label" for="message">Message</label>
+                <textarea
+                  class="fs-textarea"
+                  id="message"
+                  name="message"
+                  required
+                ></textarea>
+                <p class="fs-description">What would you like to discuss?</p>
+              </div>
+
+              <div class="fs-button-group">
+                <button class="fs-button" type="submit">Submit</button>
+              </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox" id="lightbox" aria-hidden="true">
+        <div class="lightbox-dialog" role="dialog" aria-modal="true">
+            <div class="lightbox-top">
+                <div class="lightbox-title" id="lbTitle">Project</div>
+                <button class="lightbox-close" id="lbClose" aria-label="Close">✕</button>
+            </div>
+
+            <div class="lightbox-main">
+                <button class="lightbox-nav lightbox-prev" id="lbPrev" aria-label="Previous">‹</button>
+                <img id="lbImg" alt="Project image">
+                <button class="lightbox-nav lightbox-next" id="lbNext" aria-label="Next">›</button>
+            </div>
+
+            <div class="lightbox-thumbs" id="lbThumbs"></div>
+        </div>
     </div>
-  </section>
 
-  <!-- Lightbox Modal -->
-  <div class="lightbox" id="lightbox" aria-hidden="true">
-    <div class="lightbox-content" role="dialog" aria-modal="true">
-      <div class="lightbox-top">
-        <div class="lightbox-title" id="lightboxTitle">Project</div>
-        <button class="lightbox-close" id="lightboxClose" aria-label="Close">✕</button>
-      </div>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Amr Mansour Muhammad Rashad. All rights reserved.</p>
+    </footer>
 
-      <div class="lightbox-main">
-        <button class="lightbox-nav lightbox-prev" id="lbPrev" aria-label="Previous">‹</button>
-        <img id="lightboxImg" alt="Project image" />
-        <button class="lightbox-nav lightbox-next" id="lbNext" aria-label="Next">›</button>
-      </div>
+    <script>
+        // Build project galleries (thumbs) from data attributes
+        const galleries = document.querySelectorAll('.project-gallery');
 
-      <div class="lightbox-thumbs" id="lightboxThumbs"></div>
-    </div>
-  </div>
-
-  <footer>
-    <div class="container">
-      © 2026 Amr Mansour Muhammad Rashad. All rights reserved.
-    </div>
-  </footer>
-
-  <script>
-    // Build gallery thumbnails from data attributes
-    const galleries = document.querySelectorAll('.project-gallery-grid');
-
-    const fallbackThumb = (title) =>
-      `https://ui-avatars.com/api/?name=${encodeURIComponent(title)}&size=800&background=0b1220&color=ffffff&bold=true&font-size=0.25`;
-
-    galleries.forEach(g => {
-      const base = g.dataset.base || '';
-      const title = g.dataset.projectTitle || 'Project';
-      const images = (g.dataset.images || '').split(',').map(s => s.trim()).filter(Boolean);
-
-      // Create thumbs (broken images are removed automatically)
-      images.forEach((imgName, idx) => {
-        const wrap = document.createElement('div');
-        wrap.className = 'gallery-thumb';
-
-        const img = document.createElement('img');
-        img.src = base + imgName;
-        img.alt = title + ' - ' + imgName;
-
-        img.onerror = () => {
-          wrap.remove();
-
-          // If no thumb left, add a single placeholder
-          if (!g.querySelector('.gallery-thumb')) {
-            const w2 = document.createElement('div');
-            w2.className = 'gallery-thumb';
-
-            const i2 = document.createElement('img');
-            i2.src = fallbackThumb(title);
-            i2.alt = title;
-            w2.appendChild(i2);
-
-            const cap = document.createElement('div');
-            cap.className = 'cap';
-            cap.textContent = title + ' (upload images to show)';
-            w2.appendChild(cap);
-
-            g.appendChild(w2);
-          }
-        };
-
-        wrap.addEventListener('click', () => openLightbox(title, images.map(n => base + n), idx));
-        wrap.appendChild(img);
-
-        if (idx === 0) {
-          const cap = document.createElement('div');
-          cap.className = 'cap';
-          cap.textContent = title;
-          wrap.appendChild(cap);
+        function parseImages(base, list) {
+            return (list || '')
+                .split(',')
+                .map(s => s.trim())
+                .filter(Boolean)
+                .map(name => base + name);
         }
 
-        g.appendChild(wrap);
-      });
-    });
+        function buildGallery(g) {
+            const title = g.dataset.title || 'Project';
+            const base = g.dataset.base || '';
+            const images = parseImages(base, g.dataset.images);
 
-    // Lightbox logic
-    const lb = document.getElementById('lightbox');
-    const lbImg = document.getElementById('lightboxImg');
-    const lbTitle = document.getElementById('lightboxTitle');
-    const lbThumbs = document.getElementById('lightboxThumbs');
-    const lbClose = document.getElementById('lightboxClose');
-    const lbPrev = document.getElementById('lbPrev');
-    const lbNext = document.getElementById('lbNext');
+            const maxThumbs = 4;
+            const shown = images.slice(0, maxThumbs);
+            const rest = images.length - shown.length;
 
-    let lbImages = [];
-    let lbIndex = 0;
+            shown.forEach((src, idx) => {
+                const t = document.createElement('div');
+                t.className = 'project-thumb';
 
-    function renderLightbox() {
-      lbImg.src = lbImages[lbIndex] || '';
-      [...lbThumbs.querySelectorAll('img')].forEach((t, i) => {
-        t.classList.toggle('active', i === lbIndex);
-      });
-    }
+                const img = document.createElement('img');
+                img.src = src;
+                img.alt = `${title} image ${idx + 1}`;
+                img.onerror = () => t.remove();
 
-    function openLightbox(title, images, startIndex) {
-      // Filter out broken items (optional): keep as-is; browser will show broken if missing
-      lbTitle.textContent = title;
-      lbImages = images;
-      lbIndex = Math.max(0, Math.min(startIndex, images.length - 1));
+                t.appendChild(img);
+                t.addEventListener('click', () => openLightbox(title, images, idx));
+                g.appendChild(t);
+            });
 
-      lbThumbs.innerHTML = '';
-      images.forEach((src, i) => {
-        const t = document.createElement('img');
-        t.src = src;
-        t.alt = title + ' thumbnail ' + (i + 1);
-        t.addEventListener('click', () => {
-          lbIndex = i;
-          renderLightbox();
+            if (rest > 0) {
+                const more = document.createElement('div');
+                more.className = 'project-thumb more';
+                more.setAttribute('data-more', `+${rest}`);
+                more.addEventListener('click', () => openLightbox(title, images, maxThumbs - 1));
+                g.appendChild(more);
+            }
+        }
+
+        galleries.forEach(buildGallery);
+
+        // Lightbox
+        const lb = document.getElementById('lightbox');
+        const lbImg = document.getElementById('lbImg');
+        const lbTitle = document.getElementById('lbTitle');
+        const lbThumbs = document.getElementById('lbThumbs');
+        const lbClose = document.getElementById('lbClose');
+        const lbPrev = document.getElementById('lbPrev');
+        const lbNext = document.getElementById('lbNext');
+
+        let lbImages = [];
+        let lbIndex = 0;
+
+        function renderLB() {
+            lbImg.src = lbImages[lbIndex] || '';
+            [...lbThumbs.querySelectorAll('img')].forEach((t, i) => {
+                t.classList.toggle('active', i === lbIndex);
+            });
+        }
+
+        function openLightbox(title, images, startIndex) {
+            lbTitle.textContent = title;
+            lbImages = images;
+            lbIndex = Math.max(0, Math.min(startIndex, images.length - 1));
+
+            lbThumbs.innerHTML = '';
+            images.forEach((src, i) => {
+                const t = document.createElement('img');
+                t.src = src;
+                t.alt = `${title} thumb ${i + 1}`;
+                t.addEventListener('click', () => { lbIndex = i; renderLB(); });
+                lbThumbs.appendChild(t);
+            });
+
+            lb.classList.add('open');
+            lb.setAttribute('aria-hidden', 'false');
+            renderLB();
+        }
+
+        function closeLightbox() {
+            lb.classList.remove('open');
+            lb.setAttribute('aria-hidden', 'true');
+            lbThumbs.innerHTML = '';
+            lbImages = [];
+        }
+
+        function prev() {
+            if (!lbImages.length) return;
+            lbIndex = (lbIndex - 1 + lbImages.length) % lbImages.length;
+            renderLB();
+        }
+
+        function next() {
+            if (!lbImages.length) return;
+            lbIndex = (lbIndex + 1) % lbImages.length;
+            renderLB();
+        }
+
+        lbClose.addEventListener('click', closeLightbox);
+        lb.addEventListener('click', (e) => { if (e.target === lb) closeLightbox(); });
+        lbPrev.addEventListener('click', prev);
+        lbNext.addEventListener('click', next);
+
+        document.addEventListener('keydown', (e) => {
+            if (!lb.classList.contains('open')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') prev();
+            if (e.key === 'ArrowRight') next();
         });
-        lbThumbs.appendChild(t);
-      });
 
-      lb.classList.add('open');
-      lb.setAttribute('aria-hidden', 'false');
-      renderLightbox();
-    }
-
-    function closeLightbox() {
-      lb.classList.remove('open');
-      lb.setAttribute('aria-hidden', 'true');
-      lbImages = [];
-      lbThumbs.innerHTML = '';
-    }
-
-    function prevImg() {
-      if (!lbImages.length) return;
-      lbIndex = (lbIndex - 1 + lbImages.length) % lbImages.length;
-      renderLightbox();
-    }
-
-    function nextImg() {
-      if (!lbImages.length) return;
-      lbIndex = (lbIndex + 1) % lbImages.length;
-      renderLightbox();
-    }
-
-    lbClose.addEventListener('click', closeLightbox);
-    lb.addEventListener('click', (e) => { if (e.target === lb) closeLightbox(); });
-    lbPrev.addEventListener('click', prevImg);
-    lbNext.addEventListener('click', nextImg);
-
-    document.addEventListener('keydown', (e) => {
-      if (!lb.classList.contains('open')) return;
-      if (e.key === 'Escape') closeLightbox();
-      if (e.key === 'ArrowLeft') prevImg();
-      if (e.key === 'ArrowRight') nextImg();
-    });
-  </script>
+        // Optional: open from button using data-lb-* (View Gallery)
+        function openProjectLightbox(el){
+            const title = el.dataset.lbTitle || 'Project';
+            const base = el.dataset.lbBase || '';
+            const imgs = parseImages(base, el.dataset.lbImages || '');
+            openLightbox(title, imgs, 0);
+        }
+        window.openProjectLightbox = openProjectLightbox;
+    </script>
 </body>
 </html>
