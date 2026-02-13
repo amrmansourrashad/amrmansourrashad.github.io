@@ -29,7 +29,6 @@
             --shadow-xl: 0 20px 60px rgba(102, 126, 234, 0.2);
         }
 
-        /* Dark Mode - FIXED COLORS */
         [data-theme="dark"] {
             --light-bg: #0f172a;
             --white: #1e293b;
@@ -54,7 +53,6 @@
             transition: background 0.3s ease, color 0.3s ease;
         }
 
-        /* Loading Screen - 300px Logo */
         .loading-screen {
             position: fixed;
             inset: 0;
@@ -447,7 +445,6 @@
             border-radius: 2px;
         }
 
-        /* Projects Loading Message */
         .projects-loading {
             text-align: center;
             color: var(--text-light);
@@ -512,7 +509,6 @@
             grid-area: empty;
         }
 
-        /* Timeline Dot - FIXED */
         .timeline-dot {
             width: 120px;
             height: 120px;
@@ -801,7 +797,6 @@
             box-shadow: 0 8px 24px rgba(0,0,0,0.3);
         }
 
-        /* Lightbox - FIXED */
         .lightbox {
             position: fixed;
             inset: 0;
@@ -1543,15 +1538,12 @@
             <div class="underline"></div>
         </div>
 
-        <!-- Loading Message -->
         <div class="projects-loading" id="projectsLoading">
             <i class="fas fa-spinner"></i>
             <span>Loading Projects...</span>
         </div>
 
-        <div class="projects-grid" id="projectsGrid">
-            <!-- Auto-generated -->
-        </div>
+        <div class="projects-grid" id="projectsGrid"></div>
     </section>
 
     <section id="skills">
@@ -1651,7 +1643,7 @@
             </div>
 
             <form action="https://formspree.io/f/xvzbkrya" class="fs-form" method="POST">
-                <h3>Contact Me Form</h3>
+                <h3>Contact Me</h3>
                 <div class="fs-hint">Please share a brief summary of your needs.</div>
 
                 <div class="fs-field">
@@ -1750,6 +1742,9 @@
         const videoExts = ['mp4', 'webm', 'mov'];
         const names = ['1', '2', '3', '4', '5', 'cover', 'demo', 'walkthrough'];
 
+        // Store project media globally - FIXED
+        const projectsMedia = {};
+
         function isVideo(url) {
             return videoExts.some(ext => url.toLowerCase().endsWith('.' + ext));
         }
@@ -1783,9 +1778,13 @@
             const grid = document.getElementById('projectsGrid');
             const loading = document.getElementById('projectsLoading');
 
-            for (const project of projects) {
+            for (let i = 0; i < projects.length; i++) {
+                const project = projects[i];
                 const media = await detectMedia(project.folder);
                 if (media.length === 0) continue;
+
+                const projectId = `proj-${i}`;
+                projectsMedia[projectId] = { title: project.title, media: media };
 
                 const images = media.filter(m => !isVideo(m));
                 const videos = media.filter(m => isVideo(m));
@@ -1803,7 +1802,7 @@
                         <span class="project-number">${project.number}</span>
                         <h3>${project.title}</h3>
                         <p>${project.description}</p>
-                        <div class="project-hero" onclick="openLightbox('${project.title}', ${JSON.stringify(media)}, 0)">
+                        <div class="project-hero" data-project="${projectId}" data-index="0">
                             <img src="${heroImage}" alt="${project.title}">
                         </div>
                 `;
@@ -1811,15 +1810,15 @@
                 if (galleryImages.length > 0 || videos.length > 0) {
                     html += '<div class="project-gallery">';
 
-                    galleryImages.forEach((img, i) => {
-                        html += `<div class="project-thumb" onclick="openLightbox('${project.title}', ${JSON.stringify(media)}, ${i + 1})">
+                    galleryImages.forEach((img, idx) => {
+                        html += `<div class="project-thumb" data-project="${projectId}" data-index="${idx + 1}">
                             <img src="${img}">
                         </div>`;
                     });
 
                     if (videos.length > 0) {
                         const videoIndex = media.indexOf(videos[0]);
-                        html += `<div class="project-thumb video-thumb" onclick="openVideo('${videos[0]}')">
+                        html += `<div class="project-thumb video-thumb" data-project="${projectId}" data-index="${videoIndex}">
                             <img src="${heroImage}">
                         </div>`;
                     }
@@ -1836,6 +1835,16 @@
                 card.innerHTML = html;
                 grid.appendChild(card);
             }
+
+            // Add event listeners - FIXED
+            document.querySelectorAll('[data-project]').forEach(el => {
+                el.addEventListener('click', function() {
+                    const projectId = this.getAttribute('data-project');
+                    const index = parseInt(this.getAttribute('data-index'));
+                    const projectData = projectsMedia[projectId];
+                    openLightbox(projectData.title, projectData.media, index);
+                });
+            });
 
             loading.classList.add('hidden');
         }
@@ -1873,15 +1882,6 @@
                 lbThumbs.appendChild(thumb);
             });
 
-            lb.classList.add('open');
-            renderLightbox();
-        }
-
-        function openVideo(videoUrl) {
-            lbTitle.textContent = 'Project Video';
-            lbUrls = [videoUrl];
-            lbIndex = 0;
-            lbThumbs.innerHTML = '';
             lb.classList.add('open');
             renderLightbox();
         }
