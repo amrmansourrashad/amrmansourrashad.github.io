@@ -29,13 +29,14 @@
             --shadow-xl: 0 20px 60px rgba(102, 126, 234, 0.2);
         }
 
+        /* Dark Mode - FIXED COLORS */
         [data-theme="dark"] {
             --light-bg: #0f172a;
             --white: #1e293b;
-            --text-dark: #e2e8f0;
-            --text-light: #94a3b8;
+            --text-dark: #f1f5f9;
+            --text-light: #cbd5e1;
             --border-color: #334155;
-            --shadow-md: 0 4px 20px rgba(0,0,0,0.3);
+            --shadow-md: 0 4px 20px rgba(0,0,0,0.4);
         }
 
         * {
@@ -53,7 +54,7 @@
             transition: background 0.3s ease, color 0.3s ease;
         }
 
-        /* Loading Screen - مع اللوجو */
+        /* Loading Screen - 300px Logo */
         .loading-screen {
             position: fixed;
             inset: 0;
@@ -72,7 +73,7 @@
         }
 
         .loading-logo {
-            width: 200px;
+            width: 300px;
             height: auto;
             margin-bottom: 2rem;
             animation: logoFloat 2s ease-in-out infinite;
@@ -179,7 +180,6 @@
             align-items: center;
         }
 
-        /* Logo - 120px */
         .logo {
             height: 120px;
             width: auto;
@@ -342,7 +342,7 @@
         }
 
         [data-theme="dark"] .btn-secondary {
-            background: var(--dark-bg);
+            background: #1e293b;
             border-color: var(--accent-color);
             color: var(--accent-color);
         }
@@ -447,7 +447,26 @@
             border-radius: 2px;
         }
 
-        /* Timeline - FIXED */
+        /* Projects Loading Message */
+        .projects-loading {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 1.1rem;
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .projects-loading.hidden {
+            display: none;
+        }
+
+        .projects-loading i {
+            animation: spin 1s linear infinite;
+        }
+
         .timeline {
             position: relative;
             padding: 2rem 0;
@@ -493,7 +512,7 @@
             grid-area: empty;
         }
 
-        /* Timeline Dot - بحجم 120px وبدون border-image */
+        /* Timeline Dot - FIXED */
         .timeline-dot {
             width: 120px;
             height: 120px;
@@ -507,7 +526,7 @@
             z-index: 2;
             box-shadow: var(--shadow-lg);
             transition: all 0.3s ease;
-            padding: 10px;
+            padding: 15px;
         }
 
         .timeline-item:hover .timeline-dot {
@@ -519,7 +538,6 @@
             width: 100%;
             height: 100%;
             object-fit: contain;
-            border-radius: 50%;
         }
 
         .timeline-content {
@@ -702,7 +720,12 @@
             border: 1px solid var(--border-color);
         }
 
-        /* Hero Image - صورة رقم 1 */
+        [data-theme="dark"] .project-tag {
+            background: rgba(100, 116, 139, 0.2);
+            color: var(--text-light);
+            border-color: var(--border-color);
+        }
+
         .project-hero {
             width: 100%;
             margin-bottom: 1.5rem;
@@ -722,7 +745,6 @@
             display: block;
         }
 
-        /* Gallery - صور فقط */
         .project-gallery {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -741,6 +763,11 @@
             position: relative;
         }
 
+        [data-theme="dark"] .project-thumb {
+            background: rgba(100, 116, 139, 0.1);
+            border-color: var(--border-color);
+        }
+
         .project-thumb:hover {
             transform: translateY(-3px) scale(1.03);
             box-shadow: 0 12px 24px rgba(15,23,42,0.15);
@@ -751,11 +778,6 @@
             height: 100%;
             object-fit: cover;
             display: block;
-        }
-
-        /* Video Thumbnail - آخر صورة في الجاليري */
-        .project-thumb.video-thumb {
-            position: relative;
         }
 
         .project-thumb.video-thumb::after {
@@ -779,14 +801,14 @@
             box-shadow: 0 8px 24px rgba(0,0,0,0.3);
         }
 
-        /* Lightbox */
+        /* Lightbox - FIXED */
         .lightbox {
             position: fixed;
             inset: 0;
             display: none;
             align-items: center;
             justify-content: center;
-            background: rgba(5, 10, 20, 0.92);
+            background: rgba(5, 10, 20, 0.95);
             z-index: 99999;
             padding: 16px;
         }
@@ -797,6 +819,7 @@
 
         .lightbox-dialog {
             width: min(1200px, 100%);
+            max-height: 95vh;
             background: #0b1220;
             border: 1px solid rgba(255,255,255,0.10);
             border-radius: 16px;
@@ -841,7 +864,7 @@
         .lightbox-main img,
         .lightbox-main video {
             width: 100%;
-            height: min(75vh, 800px);
+            max-height: 75vh;
             object-fit: contain;
             display: block;
         }
@@ -943,6 +966,11 @@
             font-weight: 500;
             transition: all 0.3s ease;
             border: 1px solid var(--border-color);
+        }
+
+        [data-theme="dark"] .skill-tag {
+            background: rgba(100, 116, 139, 0.2);
+            color: var(--text-light);
         }
 
         .skill-tag:hover {
@@ -1073,6 +1101,11 @@
             transition: box-shadow .2s ease, border-color .2s ease;
             background: var(--white);
             color: var(--text-dark);
+        }
+
+        [data-theme="dark"] .fs-input,
+        [data-theme="dark"] .fs-textarea {
+            border-color: var(--border-color);
         }
 
         .fs-input:focus,
@@ -1221,6 +1254,10 @@
                 height: 70px;
             }
 
+            .loading-logo {
+                width: 200px;
+            }
+
             .timeline-dot {
                 width: 80px;
                 height: 80px;
@@ -1238,7 +1275,6 @@
 </head>
 
 <body>
-    <!-- Loading Screen مع اللوجو -->
     <div class="loading-screen" id="loadingScreen">
         <img src="assets/logo.png" alt="Logo" class="loading-logo" 
              onerror="this.style.display='none'">
@@ -1507,6 +1543,12 @@
             <div class="underline"></div>
         </div>
 
+        <!-- Loading Message -->
+        <div class="projects-loading" id="projectsLoading">
+            <i class="fas fa-spinner"></i>
+            <span>Loading Projects...</span>
+        </div>
+
         <div class="projects-grid" id="projectsGrid">
             <!-- Auto-generated -->
         </div>
@@ -1654,14 +1696,12 @@
     </footer>
 
     <script>
-        // Loading
         window.addEventListener('load', () => {
             setTimeout(() => {
                 document.getElementById('loadingScreen').classList.add('hidden');
             }, 1200);
         });
 
-        // Dark Mode
         const themeToggle = document.getElementById('themeToggle');
         const htmlEl = document.documentElement;
         const themeIcon = themeToggle.querySelector('i');
@@ -1682,7 +1722,6 @@
             themeIcon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
         }
 
-        // Projects
         const projects = [
             {
                 number: '01',
@@ -1742,12 +1781,12 @@
 
         async function buildProjects() {
             const grid = document.getElementById('projectsGrid');
+            const loading = document.getElementById('projectsLoading');
 
             for (const project of projects) {
                 const media = await detectMedia(project.folder);
                 if (media.length === 0) continue;
 
-                // 1 = Hero, باقي الصور في جاليري, الفيديو في آخر الجاليري
                 const images = media.filter(m => !isVideo(m));
                 const videos = media.filter(m => isVideo(m));
 
@@ -1759,7 +1798,6 @@
                 const card = document.createElement('div');
                 card.className = 'project-card visible';
 
-                // Hero (صورة 1 فقط)
                 let html = `
                     <div class="project-content">
                         <span class="project-number">${project.number}</span>
@@ -1770,21 +1808,18 @@
                         </div>
                 `;
 
-                // Gallery (باقي الصور + الفيديو بشكل ايقونة في الآخر)
                 if (galleryImages.length > 0 || videos.length > 0) {
                     html += '<div class="project-gallery">';
 
-                    // باقي الصور
                     galleryImages.forEach((img, i) => {
                         html += `<div class="project-thumb" onclick="openLightbox('${project.title}', ${JSON.stringify(media)}, ${i + 1})">
                             <img src="${img}">
                         </div>`;
                     });
 
-                    // الفيديو كأيقونة في الآخر (خلفية = صورة 1)
                     if (videos.length > 0) {
                         const videoIndex = media.indexOf(videos[0]);
-                        html += `<div class="project-thumb video-thumb" onclick="openLightbox('${project.title}', ${JSON.stringify(media)}, ${videoIndex})">
+                        html += `<div class="project-thumb video-thumb" onclick="openVideo('${videos[0]}')">
                             <img src="${heroImage}">
                         </div>`;
                     }
@@ -1792,7 +1827,6 @@
                     html += '</div>';
                 }
 
-                // Tags
                 html += '<div class="project-tags">';
                 project.tags.forEach(tag => {
                     html += `<span class="project-tag">${tag}</span>`;
@@ -1802,6 +1836,8 @@
                 card.innerHTML = html;
                 grid.appendChild(card);
             }
+
+            loading.classList.add('hidden');
         }
 
         // Lightbox
@@ -1837,6 +1873,15 @@
                 lbThumbs.appendChild(thumb);
             });
 
+            lb.classList.add('open');
+            renderLightbox();
+        }
+
+        function openVideo(videoUrl) {
+            lbTitle.textContent = 'Project Video';
+            lbUrls = [videoUrl];
+            lbIndex = 0;
+            lbThumbs.innerHTML = '';
             lb.classList.add('open');
             renderLightbox();
         }
