@@ -1824,4 +1824,79 @@
             if (!media) return;
 
             lbMedia.innerHTML = '';
-            const el = document.createElement(media.isVideo ? 'v
+            const el = document.createElement(media.isVideo ? 'video' : 'img');
+            el.src = media.src;
+            if (media.isVideo) {
+                el.controls = true;
+                el.autoplay = true;
+            }
+            lbMedia.appendChild(el);
+
+            [...lbThumbs.children].forEach((t, i) => {
+                t.classList.toggle('active', i === lbIndex);
+            });
+        }
+
+        function openLightbox(title, mediaList, startIndex) {
+            lbTitle.textContent = title;
+            lbMediaList = mediaList;
+            lbIndex = Math.max(0, Math.min(startIndex, mediaList.length - 1));
+
+            lbThumbs.innerHTML = '';
+            mediaList.forEach((media, i) => {
+                const el = document.createElement(media.isVideo ? 'video' : 'img');
+                el.src = media.src;
+                if (media.isVideo) {
+                    el.muted = true;
+                    el.playsInline = true;
+                }
+                el.addEventListener('click', () => {
+                    lbIndex = i;
+                    renderLB();
+                });
+                lbThumbs.appendChild(el);
+            });
+
+            lb.classList.add('open');
+            renderLB();
+        }
+
+        function closeLightbox() {
+            lb.classList.remove('open');
+            lbThumbs.innerHTML = '';
+            lbMedia.innerHTML = '';
+            lbMediaList = [];
+        }
+
+        function prev() {
+            if (!lbMediaList.length) return;
+            lbIndex = (lbIndex - 1 + lbMediaList.length) % lbMediaList.length;
+            renderLB();
+        }
+
+        function next() {
+            if (!lbMediaList.length) return;
+            lbIndex = (lbIndex + 1) % lbMediaList.length;
+            renderLB();
+        }
+
+        lbClose.addEventListener('click', closeLightbox);
+        lb.addEventListener('click', (e) => {
+            if (e.target === lb) closeLightbox();
+        });
+        lbPrev.addEventListener('click', prev);
+        lbNext.addEventListener('click', next);
+
+        document.addEventListener('keydown', (e) => {
+            if (!lb.classList.contains('open')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') prev();
+            if (e.key === 'ArrowRight') next();
+        });
+
+        // Initialize projects
+        buildProjects();
+    </script>
+</body>
+
+</html>
