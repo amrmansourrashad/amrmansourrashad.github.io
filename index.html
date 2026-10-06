@@ -722,6 +722,47 @@
             border-color: var(--border-color);
         }
 
+        .project-actions {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        .project-actions .github-btn {
+            margin-top: 0;
+        }
+
+        .more-media-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.7rem 1.4rem;
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            border-radius: 8px;
+            font-family: inherit;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .more-media-btn:hover:not(:disabled) {
+            background: var(--primary-gradient);
+            color: white;
+            border-color: transparent;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .more-media-btn:disabled {
+            opacity: 0.6;
+            cursor: default;
+        }
+
         .github-btn {
             display: inline-flex;
             align-items: center;
@@ -1832,6 +1873,19 @@
             }
         }
 
+        // Find ONLY the cover image (cover.* first, then 1.*) - used for the card
+        async function detectCover(folder) {
+            const base = `assets/projects/${folder}/`;
+            for (const name of ['cover', '1']) {
+                for (const ext of imageExts) {
+                    const url = base + name + '.' + ext;
+                    if (await checkFile(url)) return url;
+                }
+            }
+            return null;
+        }
+
+        // Find ALL media (images + videos) - only runs when the visitor asks for it
         async function detectMedia(folder) {
             const base = `assets/projects/${folder}/`;
             const found = [];
@@ -1852,21 +1906,15 @@
             const grid = document.getElementById('projectsGrid');
             const loading = document.getElementById('projectsLoading');
 
-            for (let i = 0; i < projects.length; i++) {
-                const project = projects[i];
-                const media = await detectMedia(project.folder);
-                if (media.length === 0) continue;
+            // Check all covers in parallel (fast)
+            const covers = await Promise.all(projects.map(p => detectCover(p.folder)));
+
+            projects.forEach((project, i) => {
+                const cover = covers[i];
+                if (!cover) return; // no cover image -> skip project
 
                 const projectId = `proj-${i}`;
-                projectsMedia[projectId] = { title: project.title, media: media };
-
-                const images = media.filter(m => !isVideo(m));
-                const videos = media.filter(m => isVideo(m));
-
-                if (images.length === 0) continue;
-
-                const heroImage = images[0];
-                const galleryImages = images.slice(1);
+                projectsMedia[projectId] = { title: project.title, folder: project.folder, cover: cover, all: null };
 
                 const card = document.createElement('div');
                 card.className = 'project-card visible';
@@ -1876,56 +1924,63 @@
                         <span class="project-number">${project.number}</span>
                         <h3>${project.title}</h3>
                         <p>${project.description}</p>
-                        <div class="project-hero" data-project="${projectId}" data-index="0">
-                            <img src="${heroImage}" alt="${project.title}">
+                        <div class="project-hero" data-hero="${projectId}">
+                            <img src="${cover}" alt="${project.title}">
                         </div>
                 `;
-
-                if (galleryImages.length > 0 || videos.length > 0) {
-                    html += '<div class="project-gallery">';
-
-                    galleryImages.forEach((img, idx) => {
-                        html += `<div class="project-thumb" data-project="${projectId}" data-index="${idx + 1}">
-                            <img src="${img}">
-                        </div>`;
-                    });
-
-                    if (videos.length > 0) {
-                        const videoIndex = media.indexOf(videos[0]);
-                        html += `<div class="project-thumb video-thumb" data-project="${projectId}" data-index="${videoIndex}">
-                            <img src="${heroImage}">
-                        </div>`;
-                    }
-
-                    html += '</div>';
-                }
 
                 html += '<div class="project-tags">';
                 project.tags.forEach(tag => {
                     html += `<span class="project-tag">${tag}</span>`;
                 });
                 html += '</div>';
-                
-                // Add GitHub button if github link exists
+
+                html += '<div class="project-actions">';
+                html += `<button type="button" class="more-media-btn" data-more="${projectId}">
+                            <i class="fas fa-images"></i> <span>View more photos &amp; videos</span>
+                         </button>`;
                 if (project.github) {
                     html += `<a href="${project.github}" target="_blank" rel="noopener noreferrer" class="github-btn">
                         <i class="fab fa-github"></i> GitHub
                     </a>`;
                 }
-                
-                html += '</div>';
+                html += '</div></div>';
 
                 card.innerHTML = html;
                 grid.appendChild(card);
-            }
+            });
 
-            // Add event listeners - FIXED
-            document.querySelectorAll('[data-project]').forEach(el => {
+            // Click on cover -> open it big (no extra loading)
+            document.querySelectorAll('[data-hero]').forEach(el => {
                 el.addEventListener('click', function() {
-                    const projectId = this.getAttribute('data-project');
-                    const index = parseInt(this.getAttribute('data-index'));
-                    const projectData = projectsMedia[projectId];
-                    openLightbox(projectData.title, projectData.media, index);
+                    const data = projectsMedia[this.getAttribute('data-hero')];
+                    openLightbox(data.title, data.all || [data.cover], data.all ? data.all.indexOf(data.cover) : 0);
+                });
+            });
+
+            // Button -> load the rest of the media only now
+            document.querySelectorAll('[data-more]').forEach(btn => {
+                btn.addEventListener('click', async function() {
+                    const data = projectsMedia[this.getAttribute('data-more')];
+                    const label = this.querySelector('span');
+
+                    if (!data.all) {
+                        const original = label.innerHTML;
+                        this.disabled = true;
+                        label.textContent = 'Loading...';
+                        data.all = await detectMedia(data.folder);
+                        label.innerHTML = original;
+                        this.disabled = false;
+                    }
+
+                    if (data.all.length <= 1) {
+                        label.textContent = 'No more media';
+                        this.disabled = true;
+                        return;
+                    }
+
+                    const start = Math.max(0, data.all.indexOf(data.cover));
+                    openLightbox(data.title, data.all, start);
                 });
             });
 
