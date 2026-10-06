@@ -1743,25 +1743,11 @@
     </footer>
 
     <script>
-        // Hide initial loading screen quickly
-        function hideInitialLoading() {
-            const screen = document.getElementById('loadingScreen');
-            if (screen) {
-                screen.classList.add('hidden');
-            }
-        }
-
-        // Hide on DOMContentLoaded (fastest)
-        if (document.readyState !== 'loading') {
-            setTimeout(hideInitialLoading, 500);
-        } else {
-            document.addEventListener('DOMContentLoaded', () => {
-                setTimeout(hideInitialLoading, 500);
-            });
-        }
-
-        // Fallback: hide after 3 seconds no matter what
-        setTimeout(hideInitialLoading, 3000);
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loadingScreen').classList.add('hidden');
+            }, 1200);
+        });
 
         const themeToggle = document.getElementById('themeToggle');
         const htmlEl = document.documentElement;
@@ -1821,8 +1807,8 @@
                 title: 'Ames Housing Prices Analysiss',
                 description: 'An end-to-end analytical pipeline to clean, transform, and analyze the Ames Housing dataset to discover key drivers of property prices.',
                 tags: ['Python', 'Pandas', 'EDA', 'Data Visualization', 'Data Cleaning'],
-                folder: 'project-5'
-				github: 'https://github.com/amrmansourrashad/AmesHousing'
+                folder: 'project-5',
+                github: 'https://github.com/amrmansourrashad/AmesHousing'
             }
         ];
 
@@ -1839,16 +1825,9 @@
 
         async function checkFile(url) {
             try {
-                const controller = new AbortController();
-                const timeoutId = setTimeout(() => controller.abort(), 1000); // 1 second timeout
-                const res = await fetch(url, { 
-                    method: 'HEAD',
-                    signal: controller.signal 
-                });
-                clearTimeout(timeoutId);
+                const res = await fetch(url, { method: 'HEAD' });
                 return res.ok;
-            } catch (e) {
-                // Timeout or network error
+            } catch {
                 return false;
             }
         }
@@ -1856,15 +1835,8 @@
         async function detectMedia(folder) {
             const base = `assets/projects/${folder}/`;
             const found = [];
-            const startTime = Date.now();
-            const MAX_TIME = 3000; // Max 3 seconds per folder
 
             for (const name of names) {
-                // Stop if taking too long
-                if (Date.now() - startTime > MAX_TIME) {
-                    break;
-                }
-
                 for (const ext of [...videoExts, ...imageExts]) {
                     const url = base + name + '.' + ext;
                     if (await checkFile(url)) {
@@ -2035,25 +2007,7 @@
             if (e.key === 'ArrowRight') lbNext.click();
         });
 
-        // Start building projects with timeout fallback
-        let buildStarted = false;
-        
-        buildProjects().finally(() => {
-            buildStarted = true;
-            const loading = document.getElementById('projectsLoading');
-            if (loading) {
-                loading.classList.add('hidden');
-            }
-        });
-
-        // Fallback: force hide loading after max time
-        setTimeout(() => {
-            const loading = document.getElementById('projectsLoading');
-            if (loading && !loading.classList.contains('hidden')) {
-                loading.classList.add('hidden');
-                console.warn('Force hiding loading screen - took too long');
-            }
-        }, 15000); // 15 seconds max wait
+        buildProjects();
     </script>
 </body>
 </html>
