@@ -1743,11 +1743,25 @@
     </footer>
 
     <script>
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                document.getElementById('loadingScreen').classList.add('hidden');
-            }, 1200);
-        });
+        // Hide loading screen faster to prevent hanging
+        function hideLoadingScreen() {
+            const loadingScreen = document.getElementById('loadingScreen');
+            if (loadingScreen) {
+                loadingScreen.classList.add('hidden');
+            }
+        }
+
+        // Try to hide immediately after DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => {
+                setTimeout(hideLoadingScreen, 800);
+            });
+        } else {
+            setTimeout(hideLoadingScreen, 800);
+        }
+
+        // Fallback: always hide after 3 seconds max
+        setTimeout(hideLoadingScreen, 3000);
 
         const themeToggle = document.getElementById('themeToggle');
         const htmlEl = document.documentElement;
@@ -1776,7 +1790,6 @@
                 description: 'My first milestone in Data Analytics! Built an interactive dashboard using Microsoft Excel.',
                 tags: ['Excel', 'Data Analytics', 'Dashboard Design'],
                 folder: 'project-1'
-                // github: 'https://github.com/yourusername/project-1'
             },
             {
                 number: '02',
@@ -1784,7 +1797,6 @@
                 description: 'Comprehensive analysis of domestic flight trends in 2024.',
                 tags: ['Excel', 'Big Data', 'KPI Tracking'],
                 folder: 'project-2'
-                // github: 'https://github.com/yourusername/project-2'
             },
             {
                 number: '03',
@@ -1792,7 +1804,7 @@
                 description: 'This project was a deep dive into retail data, where I transformed raw sales records into a dynamic and interactive tool designed to drive business growth and operational efficiency.',
                 tags: ['Data Analytics ', 'PowerBI', 'Data visualization'],
                 folder: 'project-3',
-                // github: 'https://github.com/yourusername/project-4'
+                github: 'https://github.com/amrmansourrashad/SuperStore-Dashboard'
             },
             {
                 number: '04',
