@@ -722,6 +722,35 @@
             border-color: var(--border-color);
         }
 
+        .project-github-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1.2rem;
+            padding: 0.6rem 1.2rem;
+            background: var(--primary-gradient);
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-md);
+        }
+
+        .project-github-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .project-github-btn i {
+            font-size: 1rem;
+        }
+
+        [data-theme="dark"] .project-github-btn {
+            background: var(--primary-gradient);
+        }
+
         .project-hero {
             width: 100%;
             margin-bottom: 1.5rem;
@@ -1741,28 +1770,40 @@
                 title: 'Interactive Excel Dashboard',
                 description: 'My first milestone in Data Analytics! Built an interactive dashboard using Microsoft Excel.',
                 tags: ['Excel', 'Data Analytics', 'Dashboard Design'],
-                folder: 'project-1'
+                folder: 'project-1',
+                github: 'NA'
             },
             {
                 number: '02',
                 title: 'Flight Delay Dashboard',
                 description: 'Comprehensive analysis of domestic flight trends in 2024.',
                 tags: ['Excel', 'Big Data', 'KPI Tracking'],
-                folder: 'project-2'
+                folder: 'project-2',
+                github: 'NA'
             },
             {
                 number: '03',
                 title: 'Superstore Sales Performance Dashboard',
                 description: 'This project was a deep dive into retail data, where I transformed raw sales records into a dynamic and interactive tool designed to drive business growth and operational efficiency.',
                 tags: ['Data Analytics ', 'PowerBI', 'Data visualization'],
-                folder: 'project-3'
+                folder: 'project-3',
+                github: 'NA'
             },
             {
                 number: '04',
                 title: 'Student Academic Performance Analytics',
                 description: 'Transforming educational raw data into a strategic tool to monitor student achievements and identify factors influencing academic success.',
                 tags: ['Data Analytics ', 'PowerBI', 'Figma', 'Data visualization'],
-                folder: 'project-4'
+                folder: 'project-4',
+                github: 'NA'
+            },
+            {
+                number: '05',
+                title: 'Ames Housing Prices Analysiss',
+                description: 'An end-to-end analytical pipeline to clean, transform, and analyze the Ames Housing dataset to discover key drivers of property prices.',
+                tags: ['Python', 'Pandas', 'EDA', 'Data Visualization', 'Data Cleaning'],
+                folder: 'project-5'
+				github: 'https://github.com/amrmansourrashad/AmesHousing'
             }
         ];
 
@@ -1858,7 +1899,15 @@
                 project.tags.forEach(tag => {
                     html += `<span class="project-tag">${tag}</span>`;
                 });
-                html += '</div></div>';
+                html += '</div>';
+                
+                if (project.github) {
+                    html += `<a href="${project.github}" target="_blank" rel="noopener noreferrer" class="project-github-btn">
+                        <i class="fab fa-github"></i> View on GitHub
+                    </a>`;
+                }
+                
+                html += '</div>';
 
                 card.innerHTML = html;
                 grid.appendChild(card);
