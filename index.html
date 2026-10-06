@@ -1885,22 +1885,19 @@
             return null;
         }
 
-        // Find ALL media (images + videos) - only runs when the visitor asks for it
-        async function detectMedia(folder) {
+        // Find media of given types (checked in parallel, order preserved)
+        async function detectByExts(folder, exts) {
             const base = `assets/projects/${folder}/`;
-            const found = [];
-
+            const urls = [];
             for (const name of names) {
-                for (const ext of [...videoExts, ...imageExts]) {
-                    const url = base + name + '.' + ext;
-                    if (await checkFile(url)) {
-                        found.push(url);
-                    }
-                }
+                for (const ext of exts) urls.push(base + name + '.' + ext);
             }
-
-            return found;
+            const results = await Promise.all(urls.map(checkFile));
+            return urls.filter((_, i) => results[i]);
         }
+
+        const detectImages = folder => detectByExts(folder, imageExts);
+        const detectVideos = folder => detectByExts(folder, videoExts);
 
         async function buildProjects() {
             const grid = document.getElementById('projectsGrid');
@@ -1914,7 +1911,13 @@
                 if (!cover) return; // no cover image -> skip project
 
                 const projectId = `proj-${i}`;
-                projectsMedia[projectId] = { title: project.title, folder: project.folder, cover: cover, all: null };
+                projectsMedia[projectId] = {
+                    title: project.title,
+                    folder: project.folder,
+                    cover: cover,
+                    images: null,
+                    videos: null
+                };
 
                 const card = document.createElement('div');
                 card.className = 'project-card visible';
@@ -1936,8 +1939,8 @@
                 html += '</div>';
 
                 html += '<div class="project-actions">';
-                html += `<button type="button" class="more-media-btn" data-more="${projectId}">
-                            <i class="fas fa-images"></i> <span>View more photos &amp; videos</span>
+                html += `<button type="button" class="more-media-btn" data-photos="${projectId}">
+                            <i class="fas fa-images"></i> <span>View more photos</span>
                          </button>`;
                 if (project.github) {
                     html += `<a href="${project.github}" target="_blank" rel="noopener noreferrer" class="github-btn">
@@ -1948,39 +1951,56 @@
 
                 card.innerHTML = html;
                 grid.appendChild(card);
-            });
 
-            // Click on cover -> open it big (no extra loading)
-            document.querySelectorAll('[data-hero]').forEach(el => {
-                el.addEventListener('click', function() {
-                    const data = projectsMedia[this.getAttribute('data-hero')];
-                    openLightbox(data.title, data.all || [data.cover], data.all ? data.all.indexOf(data.cover) : 0);
+                const data = projectsMedia[projectId];
+
+                // Cover click -> open it big
+                card.querySelector('[data-hero]').addEventListener('click', () => {
+                    if (data.images) {
+                        openLightbox(data.title, data.images, Math.max(0, data.images.indexOf(data.cover)));
+                    } else {
+                        openLightbox(data.title, [data.cover], 0);
+                    }
                 });
-            });
 
-            // Button -> load the rest of the media only now
-            document.querySelectorAll('[data-more]').forEach(btn => {
-                btn.addEventListener('click', async function() {
-                    const data = projectsMedia[this.getAttribute('data-more')];
-                    const label = this.querySelector('span');
+                // Photos button -> load the rest of the photos only now
+                const photosBtn = card.querySelector('[data-photos]');
+                photosBtn.addEventListener('click', async () => {
+                    const label = photosBtn.querySelector('span');
 
-                    if (!data.all) {
-                        const original = label.innerHTML;
-                        this.disabled = true;
+                    if (!data.images) {
+                        const original = label.textContent;
+                        photosBtn.disabled = true;
                         label.textContent = 'Loading...';
-                        data.all = await detectMedia(data.folder);
-                        label.innerHTML = original;
-                        this.disabled = false;
+                        data.images = await detectImages(data.folder);
+                        label.textContent = original;
+                        photosBtn.disabled = false;
                     }
 
-                    if (data.all.length <= 1) {
-                        label.textContent = 'No more media';
-                        this.disabled = true;
+                    if (data.images.length <= 1) {
+                        label.textContent = 'No more photos';
+                        photosBtn.disabled = true;
                         return;
                     }
 
-                    const start = Math.max(0, data.all.indexOf(data.cover));
-                    openLightbox(data.title, data.all, start);
+                    openLightbox(data.title, data.images, Math.max(0, data.images.indexOf(data.cover)));
+                });
+
+                // Videos button -> added in the background, ONLY if videos exist
+                detectVideos(data.folder).then(videos => {
+                    data.videos = videos;
+                    if (videos.length === 0) return;
+
+                    const videoBtn = document.createElement('button');
+                    videoBtn.type = 'button';
+                    videoBtn.className = 'more-media-btn';
+                    videoBtn.innerHTML = '<i class="fas fa-play-circle"></i> <span>Watch videos</span>';
+                    videoBtn.addEventListener('click', () => {
+                        openLightbox(data.title, data.videos, 0);
+                    });
+
+                    // place it right after the photos button
+                    photosBtn.insertAdjacentElement('afterend', videoBtn);
                 });
             });
 
