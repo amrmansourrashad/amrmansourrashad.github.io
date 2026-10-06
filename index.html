@@ -1743,25 +1743,25 @@
     </footer>
 
     <script>
-        // Hide loading screen faster to prevent hanging
-        function hideLoadingScreen() {
+        // Hide initial loading screen quickly
+        function hideInitialLoadingScreen() {
             const loadingScreen = document.getElementById('loadingScreen');
             if (loadingScreen) {
                 loadingScreen.classList.add('hidden');
             }
         }
 
-        // Try to hide immediately after DOM is ready
+        // Try to hide on DOMContentLoaded
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', () => {
-                setTimeout(hideLoadingScreen, 800);
+                setTimeout(hideInitialLoadingScreen, 600);
             });
         } else {
-            setTimeout(hideLoadingScreen, 800);
+            setTimeout(hideInitialLoadingScreen, 600);
         }
 
-        // Fallback: always hide after 3 seconds max
-        setTimeout(hideLoadingScreen, 3000);
+        // Always hide after 2 seconds max
+        setTimeout(hideInitialLoadingScreen, 2000);
 
         const themeToggle = document.getElementById('themeToggle');
         const htmlEl = document.documentElement;
@@ -1790,6 +1790,7 @@
                 description: 'My first milestone in Data Analytics! Built an interactive dashboard using Microsoft Excel.',
                 tags: ['Excel', 'Data Analytics', 'Dashboard Design'],
                 folder: 'project-1'
+                // github: 'https://github.com/yourusername/project-1'
             },
             {
                 number: '02',
@@ -1797,6 +1798,7 @@
                 description: 'Comprehensive analysis of domestic flight trends in 2024.',
                 tags: ['Excel', 'Big Data', 'KPI Tracking'],
                 folder: 'project-2'
+                // github: 'https://github.com/yourusername/project-2'
             },
             {
                 number: '03',
@@ -1804,7 +1806,7 @@
                 description: 'This project was a deep dive into retail data, where I transformed raw sales records into a dynamic and interactive tool designed to drive business growth and operational efficiency.',
                 tags: ['Data Analytics ', 'PowerBI', 'Data visualization'],
                 folder: 'project-3',
-                github: 'https://github.com/amrmansourrashad/SuperStore-Dashboard'
+                // github: 'https://github.com/yourusername/project-4'
             },
             {
                 number: '04',
@@ -1847,12 +1849,18 @@
         async function detectMedia(folder) {
             const base = `assets/projects/${folder}/`;
             const found = [];
+            let checkCount = 0;
 
             for (const name of names) {
                 for (const ext of [...videoExts, ...imageExts]) {
                     const url = base + name + '.' + ext;
                     if (await checkFile(url)) {
                         found.push(url);
+                    }
+                    checkCount++;
+                    // Stop checking after finding first 10 files to speed up
+                    if (found.length > 0 && checkCount > 50) {
+                        return found;
                     }
                 }
             }
@@ -2019,7 +2027,26 @@
             if (e.key === 'ArrowRight') lbNext.click();
         });
 
-        buildProjects();
+        // Start building projects
+        buildProjects().catch(err => {
+            console.error('Error building projects:', err);
+            hideLoadingScreen();
+        });
+
+        // Force hide loading screen after 5 seconds max
+        setTimeout(() => {
+            const loadingScreen = document.getElementById('projectsLoading');
+            if (loadingScreen) {
+                loadingScreen.classList.add('hidden');
+            }
+        }, 5000);
+
+        function hideLoadingScreen() {
+            const loadingScreen = document.getElementById('projectsLoading');
+            if (loadingScreen) {
+                loadingScreen.classList.add('hidden');
+            }
+        }
     </script>
 </body>
 </html>
