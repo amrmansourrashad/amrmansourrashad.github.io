@@ -757,6 +757,38 @@
             border-radius: 16px;
             overflow: hidden;
             cursor: pointer;
+        }
+
+        .project-placeholder {
+            background: linear-gradient(135deg, #e9ecef 0%, #f6f8fb 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 250px;
+            cursor: default !important;
+        }
+
+        [data-theme="dark"] .project-placeholder {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+        }
+
+        .placeholder-content {
+            text-align: center;
+            color: var(--text-light);
+        }
+
+        .placeholder-content i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        .placeholder-content p {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        .project-hero {
             transition: transform 0.3s ease;
         }
 
@@ -1771,7 +1803,7 @@
                 description: 'My first milestone in Data Analytics! Built an interactive dashboard using Microsoft Excel.',
                 tags: ['Excel', 'Data Analytics', 'Dashboard Design'],
                 folder: 'project-1',
-                github: 'NA'
+                github: 'https://github.com/yourusername/project-1'
             },
             {
                 number: '02',
@@ -1779,7 +1811,7 @@
                 description: 'Comprehensive analysis of domestic flight trends in 2024.',
                 tags: ['Excel', 'Big Data', 'KPI Tracking'],
                 folder: 'project-2',
-                github: 'NA'
+                github: 'https://github.com/yourusername/project-2'
             },
             {
                 number: '03',
@@ -1787,7 +1819,7 @@
                 description: 'This project was a deep dive into retail data, where I transformed raw sales records into a dynamic and interactive tool designed to drive business growth and operational efficiency.',
                 tags: ['Data Analytics ', 'PowerBI', 'Data visualization'],
                 folder: 'project-3',
-                github: 'NA'
+                github: 'https://github.com/yourusername/project-3'
             },
             {
                 number: '04',
@@ -1795,7 +1827,7 @@
                 description: 'Transforming educational raw data into a strategic tool to monitor student achievements and identify factors influencing academic success.',
                 tags: ['Data Analytics ', 'PowerBI', 'Figma', 'Data visualization'],
                 folder: 'project-4',
-                github: 'NA'
+                github: 'https://github.com/yourusername/project-4'
             },
             {
                 number: '05',
@@ -1850,19 +1882,8 @@
             for (let i = 0; i < projects.length; i++) {
                 const project = projects[i];
                 const media = await detectMedia(project.folder);
-                if (media.length === 0) continue;
 
                 const projectId = `proj-${i}`;
-                projectsMedia[projectId] = { title: project.title, media: media };
-
-                const images = media.filter(m => !isVideo(m));
-                const videos = media.filter(m => isVideo(m));
-
-                if (images.length === 0) continue;
-
-                const heroImage = images[0];
-                const galleryImages = images.slice(1);
-
                 const card = document.createElement('div');
                 card.className = 'project-card visible';
 
@@ -1871,28 +1892,49 @@
                         <span class="project-number">${project.number}</span>
                         <h3>${project.title}</h3>
                         <p>${project.description}</p>
-                        <div class="project-hero" data-project="${projectId}" data-index="0">
-                            <img src="${heroImage}" alt="${project.title}">
-                        </div>
                 `;
 
-                if (galleryImages.length > 0 || videos.length > 0) {
-                    html += '<div class="project-gallery">';
+                // Show media if available, otherwise show placeholder
+                if (media.length > 0) {
+                    projectsMedia[projectId] = { title: project.title, media: media };
+                    const images = media.filter(m => !isVideo(m));
+                    const videos = media.filter(m => isVideo(m));
 
-                    galleryImages.forEach((img, idx) => {
-                        html += `<div class="project-thumb" data-project="${projectId}" data-index="${idx + 1}">
-                            <img src="${img}">
-                        </div>`;
-                    });
+                    if (images.length > 0) {
+                        const heroImage = images[0];
+                        const galleryImages = images.slice(1);
 
-                    if (videos.length > 0) {
-                        const videoIndex = media.indexOf(videos[0]);
-                        html += `<div class="project-thumb video-thumb" data-project="${projectId}" data-index="${videoIndex}">
-                            <img src="${heroImage}">
+                        html += `<div class="project-hero" data-project="${projectId}" data-index="0">
+                            <img src="${heroImage}" alt="${project.title}">
                         </div>`;
+
+                        if (galleryImages.length > 0 || videos.length > 0) {
+                            html += '<div class="project-gallery">';
+
+                            galleryImages.forEach((img, idx) => {
+                                html += `<div class="project-thumb" data-project="${projectId}" data-index="${idx + 1}">
+                                    <img src="${img}">
+                                </div>`;
+                            });
+
+                            if (videos.length > 0) {
+                                const videoIndex = media.indexOf(videos[0]);
+                                html += `<div class="project-thumb video-thumb" data-project="${projectId}" data-index="${videoIndex}">
+                                    <i class="fas fa-play"></i>
+                                </div>`;
+                            }
+
+                            html += '</div>';
+                        }
                     }
-
-                    html += '</div>';
+                } else {
+                    // Placeholder for projects without media
+                    html += `<div class="project-hero project-placeholder">
+                        <div class="placeholder-content">
+                            <i class="fas fa-image"></i>
+                            <p>No images yet</p>
+                        </div>
+                    </div>`;
                 }
 
                 html += '<div class="project-tags">';
@@ -1919,7 +1961,9 @@
                     const projectId = this.getAttribute('data-project');
                     const index = parseInt(this.getAttribute('data-index'));
                     const projectData = projectsMedia[projectId];
-                    openLightbox(projectData.title, projectData.media, index);
+                    if (projectData) {
+                        openLightbox(projectData.title, projectData.media, index);
+                    }
                 });
             });
 
