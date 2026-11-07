@@ -1916,7 +1916,10 @@
 
             projects.forEach((project, i) => {
                 const cover = covers[i];
-                if (!cover) return; // no cover image -> skip project
+                if (!cover) {
+    console.warn(`Project ${project.number}: no cover found in assets/projects/${project.folder}/ (expected cover.* or 1.*)`);
+    return;
+}
 
                 const projectId = `proj-${i}`;
                 projectsMedia[projectId] = {
